@@ -1,12 +1,13 @@
-import json
-from flask import Flask
+from flask import Flask, jsonify
+import msd_walker
 
 app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'])
 def recommend():
-    return 'Test'
+    msd_walker.read_song_infos()
+    return msd_walker.test()
 
 
 if __name__ == "__main__":
