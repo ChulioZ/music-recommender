@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def recommend():
     msd_walker.read_song_infos()
-    return msd_walker.test()
+    return 'Test'
 
 
 if __name__ == "__main__":
