@@ -10,6 +10,7 @@ from sklearn.cluster import KMeans
 import hdf5_getters as GETTERS
 import mysql.connector as mc
 import pandas as pd
+import pyodbc
 from os.path import dirname, abspath
 
 file_path = dirname(dirname(dirname(abspath(__file__))))
@@ -55,11 +56,15 @@ def read_song_infos():
             h5.close()
             print('Song'+str(i)+' eingelesen')
             i += 1
-    connection = mc.connect(host="sql7.freesqldatabase.com",
-                            user="sql7236942",
-                            passwd="ezVH8yrE2v",
-                            db="sql7236942")
+
+    server = 'mrd.database.windows.net'
+    database = 'mrd'
+    username = 'qaywsx'
+    password = 'w@970881'
+    connection = pyodbc.connect('DRIVER={ODBC Driver 13 for SQL Server};SERVER=' +
+                                server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD=' + password)
     cursor = connection.cursor()
+
     i = 1
     for key in song_infos:
         format_str = """INSERT INTO Songs (id, title, artist, danceability, energy, loudness, hotttnesss, tempo)
