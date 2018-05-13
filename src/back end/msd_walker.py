@@ -10,7 +10,6 @@ from sklearn.cluster import KMeans
 import hdf5_getters as GETTERS
 import mysql.connector as mc
 import pandas as pd
-from sklearn.preprocessing import Imputer
 from os.path import dirname, abspath
 
 file_path = dirname(dirname(dirname(abspath(__file__))))
