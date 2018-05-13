@@ -10,7 +10,6 @@ from sklearn.cluster import KMeans
 import hdf5_getters as GETTERS
 import mysql.connector as mc
 import pandas as pd
-import fancyimpute
 from sklearn.preprocessing import Imputer
 
 file_path = os.path.dirname(os.path.dirname(
