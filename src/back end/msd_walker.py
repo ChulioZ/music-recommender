@@ -11,9 +11,9 @@ import hdf5_getters as GETTERS
 import mysql.connector as mc
 import pandas as pd
 from sklearn.preprocessing import Imputer
+from os.path import dirname, abspath
 
-file_path = os.path.dirname(os.path.dirname(
-    os.path.dirname(os.path.abspath(__file__))))
+file_path = dirname(dirname(dirname(abspath(__file__))))
 msd_path = os.path.join(file_path, 'msd')
 msd_data_path = os.path.join(msd_path, 'data', 'A', 'A', 'A')
 msd_addf_path = os.path.join(msd_path, 'AdditionalFiles')
