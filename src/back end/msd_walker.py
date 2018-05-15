@@ -1,15 +1,10 @@
 import os
-import sys
-import time
 import glob
-import datetime
-import sqlite3
 import math
 import numpy as np
 from sklearn.cluster import KMeans
 import hdf5_getters as GETTERS
 import mysql.connector as mc
-import pandas as pd
 import pyodbc
 from os.path import dirname, abspath
 
@@ -22,7 +17,6 @@ song_infos = {}
 
 
 def read_song_infos():
-    print(msd_data_path)
     i = 1
     for root, dirs, files in os.walk(msd_data_path):
         files = glob.glob(os.path.join(root, '*'+'.h5'))
@@ -68,10 +62,11 @@ def read_song_infos():
     i = 1
     for key in song_infos:
         format_str = """INSERT INTO Songs (id, title, artist, danceability, energy, loudness, hotttnesss, tempo)
-        VALUES ("{id}", "{title}", "{artist}", {danceability}, {energy}, {loudness}, {hotttnesss}, {tempo});"""
+        VALUES ('{id}', '{title}', '{artist}', {danceability}, {energy}, {loudness}, {hotttnesss}, {tempo});"""
 
         sql_command = format_str.format(id=key, title=song_infos[key]['title'], artist=song_infos[key]['artist'], danceability=song_infos[key]['danceability'],
                                         energy=song_infos[key]['energy'], loudness=song_infos[key]['loudness'], hotttnesss=song_infos[key]['hotttnesss'], tempo=song_infos[key]['tempo'])
+        print(sql_command)
         cursor.execute(sql_command)
         print('Song'+str(i)+' in DB geschrieben')
     connection.commit()
