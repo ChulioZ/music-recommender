@@ -6,7 +6,8 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def recommend():
-    msd_walker.read_song_infos()
+    # This method call shouldn't be needed any longer -- the data base is complete!
+    # msd_walker.read_song_infos()
     return 'Test'
 
 
