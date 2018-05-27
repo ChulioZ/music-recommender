@@ -23,6 +23,7 @@ def read_song_infos():
 
     start = time.time()
 
+    # read all relevant infos from the songs and store them in a dictionary
     i = 0
     ids = set()
     missing_hotttnesss_values = 0
@@ -75,28 +76,33 @@ def read_song_infos():
                     song_infos[i]['hotttnesss'] = np.NaN
                     missing_hotttnesss_values += 1
                 else:
-                    song_infos[i]['hotttnesss'] = GETTERS.get_song_hotttnesss(h5)
+                    song_infos[i]['hotttnesss'] = GETTERS.get_song_hotttnesss(
+                        h5)
                 h5.close()
                 print('Song'+str(i)+' eingelesen')
             else:
                 print('Song-ID doppelt')
 
-    song_array = np.array([[song_infos[1]['timeSig'], song_infos[1]['songkey'], song_infos[1]['mode'], song_infos[1]['loudness'], song_infos[1]['tempo'], song_infos[1]['hotttnesss']]])
-    for index in range(2,i+1):
-        newar = np.array([[song_infos[index]['timeSig'], song_infos[index]['songkey'], song_infos[index]['mode'], song_infos[index]['loudness'], song_infos[index]['tempo'], song_infos[index]['hotttnesss']]])
+    # impute missing values via fancyimpute MICE imputation and store the new values in the dictionary
+    song_array = np.array([[song_infos[1]['timeSig'], song_infos[1]['songkey'], song_infos[1]
+                            ['mode'], song_infos[1]['loudness'], song_infos[1]['tempo'], song_infos[1]['hotttnesss']]])
+    for index in range(2, i+1):
+        newar = np.array([[song_infos[index]['timeSig'], song_infos[index]['songkey'], song_infos[index]['mode'],
+                           song_infos[index]['loudness'], song_infos[index]['tempo'], song_infos[index]['hotttnesss']]])
         song_array = np.concatenate((song_array, newar))
         print('song'+str(index)+'konkateniert')
     mc = MICE()
     a = mc.complete(song_array)
-    for song in range(1,i+1):
-        song_infos[song]['timeSig'] = a[song-1,0]
-        song_infos[song]['songkey'] = a[song-1,1]
-        song_infos[song]['mode'] = a[song-1,2]
-        song_infos[song]['loudness'] = a[song-1,3]
-        song_infos[song]['tempo'] = a[song-1,4]
-        song_infos[song]['hotttnesss'] = a[song-1,5]
+    for song in range(1, i+1):
+        song_infos[song]['timeSig'] = a[song-1, 0]
+        song_infos[song]['songkey'] = a[song-1, 1]
+        song_infos[song]['mode'] = a[song-1, 2]
+        song_infos[song]['loudness'] = a[song-1, 3]
+        song_infos[song]['tempo'] = a[song-1, 4]
+        song_infos[song]['hotttnesss'] = a[song-1, 5]
         print('songinfos'+str(song)+'aktualisiert')
 
+    # connect to the data base
     server = 'mrd.database.windows.net'
     database = 'mrd'
     username = 'qaywsx'
@@ -105,11 +111,13 @@ def read_song_infos():
                                 server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD=' + password)
     cursor = connection.cursor()
 
+    # delete old data in the data base
     print('lösche alte Daten ...')
     cursor.execute("DELETE FROM songs;")
     cursor.execute("DELETE FROM simartists;")
     print('Daten gelöscht')
 
+    # save each song in the data base
     for key in song_infos:
         format_str = """INSERT INTO songs (id, title, artist, loudness, hotttnesss, tempo, timeSig, songkey, mode)
         VALUES ('{id}', '{title}', '{artist}', {loudness}, {hotttnesss}, {tempo}, {timeSig}, {songkey}, {mode});"""
@@ -124,7 +132,7 @@ def read_song_infos():
             a = a.decode('UTF-8')
             sql_command = format_str2.format(id=key, artist=a)
             cursor.execute(sql_command)'''
-        
+
         print('Song'+str(key)+' in DB geschrieben')
     connection.commit()
 
