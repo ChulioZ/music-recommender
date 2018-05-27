@@ -4,7 +4,6 @@ import datetime
 import glob
 import math
 import numpy as np
-from sklearn.cluster import KMeans
 import hdf5_getters as GETTERS
 import mysql.connector as mc
 import pyodbc
