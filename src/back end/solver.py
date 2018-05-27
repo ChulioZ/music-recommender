@@ -15,7 +15,7 @@ from __future__ import absolute_import, print_function, division
 import numpy as np
 from six.moves import range
 
-from .common import generate_random_column_samples
+from common import generate_random_column_samples
 
 
 class Solver(object):
