@@ -9,6 +9,7 @@ import hdf5_getters as GETTERS
 import pyodbc
 from os.path import dirname, abspath
 from mice import MICE
+from db_song_getter import get_all_parameters, get_all_ids
 
 
 def do_kmeans():
@@ -22,19 +23,11 @@ def do_kmeans():
                                 server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD=' + password)
     cursor = connection.cursor()
 
-    print('Hole Parameter')
-    param = "SELECT loudness,hotttnesss,tempo,timeSig,songkey,mode FROM songs"
-    cursor.execute(param)
-    paramResults = cursor.fetchall()
-    song_array = np.array(paramResults)
+    song_array = get_all_parameters()
     print(str(datetime.timedelta(seconds=time.time()-start)))
 
     print('Hole IDs')
-    ids = "SELECT id FROM songs"
-    cursor.execute(ids)
-    idsResults = cursor.fetchall()
-    id_array = np.array(idsResults)
-    print(id_array[3][0])
+    id_array = get_all_ids()
     print(str(datetime.timedelta(seconds=time.time()-start)))
 
     print('Führe k-means++ aus')

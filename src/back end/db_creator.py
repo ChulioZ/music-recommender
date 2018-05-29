@@ -82,6 +82,8 @@ def read_song_infos():
             else:
                 print('Song-ID doppelt')
 
+    ####### NORMIERUNG
+
     # impute missing values via fancyimpute MICE imputation and store the new values in the dictionary
     song_array = np.array([[song_infos[1]['timeSig'], song_infos[1]['songkey'], song_infos[1]
                             ['mode'], song_infos[1]['loudness'], song_infos[1]['tempo'], song_infos[1]['hotttnesss']]])
