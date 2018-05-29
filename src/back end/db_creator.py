@@ -82,7 +82,17 @@ def read_song_infos():
             else:
                 print('Song-ID doppelt')
 
-    ####### NORMIERUNG
+    # normalize the values
+    for key in ['loudness', 'hotttnesss', 'tempo', 'timeSig', 'songkey', 'mode']:
+        max_value = -float("inf")
+        min_value = float("inf")
+        for index in song_infos:
+            max_value = max(max_value, float(song_infos[index][key]))
+            min_value = min(min_value, float(song_infos[index][key]))
+        for index in song_infos:
+            song_infos[index][key] = (
+                float(song_infos[index][key]) - min_value)/(max_value - min_value) * 100
+            print('Song'+str(index)+'normalisiert')
 
     # impute missing values via fancyimpute MICE imputation and store the new values in the dictionary
     song_array = np.array([[song_infos[1]['timeSig'], song_infos[1]['songkey'], song_infos[1]
