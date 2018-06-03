@@ -15,14 +15,29 @@ msd_path = os.path.join(file_path, 'msd')
 msd_data_path = os.path.join(msd_path, 'data')
 msd_addf_path = os.path.join(msd_path, 'AdditionalFiles')
 
-song_infos = {}
+
+def change_db():
+    # connect to the data base
+    server = 'mrd.database.windows.net'
+    database = 'mrd'
+    username = 'qaywsx'
+    password = 'w@970881'
+    connection = pyodbc.connect('DRIVER={ODBC Driver 13 for SQL Server};SERVER=' +
+                                server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD=' + password)
+    cursor = connection.cursor()
+
+    # replace with the SQL command you want to execute
+    #cursor.execute("ALTER TABLE songs ADD label int;")
+    connection.commit()
+    cursor.close()
+    connection.close()
 
 
-def read_song_infos():
-
+def build_db():
     start = time.time()
 
     # read all relevant infos from the songs and store them in a dictionary
+    song_infos = {}
     i = 0
     ids = set()
     missing_hotttnesss_values = 0
@@ -125,7 +140,6 @@ def read_song_infos():
     # delete old data in the data base
     print('lösche alte Daten ...')
     cursor.execute("DELETE FROM songs;")
-    cursor.execute("DELETE FROM simartists;")
     print('Daten gelöscht')
 
     # save each song in the data base
@@ -136,14 +150,6 @@ def read_song_infos():
         sql_command = format_str.format(id=song_infos[key]['id'], title=song_infos[key]['title'], artist=song_infos[key]['artist'], loudness=song_infos[key]['loudness'], hotttnesss=song_infos[key]
                                         ['hotttnesss'], tempo=song_infos[key]['tempo'], timeSig=song_infos[key]['timeSig'], songkey=song_infos[key]['songkey'], mode=song_infos[key]['mode'])
         cursor.execute(sql_command)
-
-        '''
-        for a in song_infos[key]['simartists']:
-            format_str2 = """INSERT INTO simartists (id, artist) VALUES ('{id}', '{artist}');"""
-            a = a.decode('UTF-8')
-            sql_command = format_str2.format(id=key, artist=a)
-            cursor.execute(sql_command)'''
-
         print('Song'+str(key)+' in DB geschrieben')
     connection.commit()
 
@@ -159,3 +165,22 @@ def read_song_infos():
 
     end = time.time()
     print(str(datetime.timedelta(seconds=end-start)))
+
+
+def add_labels_to_db(labels, ids):
+    # connect to the data base
+    server = 'mrd.database.windows.net'
+    database = 'mrd'
+    username = 'qaywsx'
+    password = 'w@970881'
+    connection = pyodbc.connect('DRIVER={ODBC Driver 13 for SQL Server};SERVER=' +
+                                server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD=' + password)
+    cursor = connection.cursor()
+
+    # save each label in the data base
+    format_str = """UPDATE songs SET label = {label} WHERE id={id};"""
+    for i in range(0,len(labels)):
+        sql_command = format_str.format(label=labels[i], id=ids[i])
+        cursor.execute(sql_command)
+        print('Label'+str(i)+' in DB geschrieben')
+    connection.commit()
