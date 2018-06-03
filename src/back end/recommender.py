@@ -87,13 +87,15 @@ def distribute_points(ids_in_cluster, song_dict, songid, min_points, max_points)
     max_distance = -float("inf")
     min_distance = float("inf")
     for sid in ids_in_cluster:
-        distance = 0
-        for key in ['loudness', 'hotttnesss', 'tempo', 'timeSig', 'songkey']:
-            distance += math.pow(song_dict[songid]
-                                 [key] - song_dict[sid][key], 2)
-        song_dict[sid]['distance'] = math.sqrt(distance)
-        max_distance = max(max_distance, distance)
-        min_distance = min(min_distance, distance)
+        if sid is not songid:
+            distance = 0
+            for key in ['loudness', 'hotttnesss', 'tempo', 'timeSig', 'songkey']:
+                distance += math.pow(song_dict[songid]
+                                     [key] - song_dict[sid][key], 2)
+            distance = math.sqrt(distance)
+            song_dict[sid]['distance'] = distance
+            max_distance = max(max_distance, distance)
+            min_distance = min(min_distance, distance)
     for sid in ids_in_cluster:
         diff = max_distance - song_dict[sid]['distance']
         if(max_distance == min_distance):
@@ -101,10 +103,10 @@ def distribute_points(ids_in_cluster, song_dict, songid, min_points, max_points)
         else:
             points = diff / (max_distance - min_distance) * \
                 (max_points - min_points) + min_points
-        song_dict[sid]['points'] = 5/6*max(
-            song_dict[sid]['points'], points)
+        points *= 5/6
         if song_dict[songid]['mode'] == song_dict[sid]['mode']:
-            song_dict[sid]['points'] += 1/6*max_points
+            points += 1/6*max_points
+        song_dict[sid]['points'] = max(song_dict[sid]['points'], points)
     return song_dict
 
 
