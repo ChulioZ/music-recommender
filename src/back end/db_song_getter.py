@@ -10,32 +10,41 @@ connection = pyodbc.connect('DRIVER={ODBC Driver 13 for SQL Server};SERVER=' +
                             server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD=' + password)
 cursor = connection.cursor()
 
-
-def get_all_parameters():
-    param = "SELECT loudness,hotttnesss,tempo,timeSig,songkey,mode FROM songs"
+def get_all_cluster_parameters():
+    print('Hole alle Cluster-Parameter aus der Datenbank...')
+    param = "SELECT loudness,hotttnesss,tempo,timeSig,songkey FROM songs"
     cursor.execute(param)
-    paramResults = cursor.fetchall()
-    return np.array(paramResults)
+    return np.array(cursor.fetchall())
+
+
+def get_all_other_parameters():
+    print('Hole alle anderen Parameter aus der Datenbank...')
+    param = "SELECT mode FROM songs"
+    cursor.execute(param)
+    return np.array(cursor.fetchall())
 
 
 def get_all_ids():
+    print('Hole alle IDs aus der Datenbank...')
     ids = "SELECT id FROM songs"
     cursor.execute(ids)
-    return cursor.fetchall()
+    return np.array(cursor.fetchall())
 
 
-def get_all_songinfos(entered_ids=None, ids2test=None):
+def get_all_songinfos(ids2test=None):
+    print('Hole alle Song-Infos aus der Datenbank...')
     info_sql = "SELECT id,loudness,hotttnesss,tempo,timeSig,songkey,mode,label FROM songs"
-    if entered_ids is not None:
-        info_sql += " WHERE label IN (SELECT label FROM songs WHERE "
-        for i in range(0, len(entered_ids)-1):
-            info_sql += "id='" + entered_ids[i] + "' OR "
-        info_sql += "id='" + entered_ids[len(entered_ids)-1] + "')"
     if ids2test is not None:
         info_sql += " WHERE "
         for l in range(0, len(ids2test)-1):
             info_sql += "id='" + ids2test[l] + "' OR "
         info_sql += "id='" + ids2test[len(ids2test)-1] + "'"
     cursor.execute(info_sql)
-    info_results = cursor.fetchall()
-    return np.array(info_results)
+    return np.array(cursor.fetchall())
+
+
+def get_all_centroids():
+    print('Hole alle Centroids aus der Datenbank...')
+    param = "SELECT loudness,hotttnesss,tempo,timeSig,songkey FROM centroids"
+    cursor.execute(param)
+    return np.array(cursor.fetchall())
