@@ -5,11 +5,13 @@ import math
 import numpy as np
 
 
-def recommend(entered_ids, song_dict=None):
+def recommend(entered_ids, centroids=None, song_dict=None):
     if song_dict is None:
         song_array = get_all_songinfos()
         song_dict = build_song_dict(song_array)
-    clusters = build_song_clusters(song_dict)
+    if centroids is None:
+        centroids = get_all_centroids()
+    clusters = build_song_clusters(song_dict, len(centroids))
     for songid in entered_ids:
         song_dict = distribute_points(
             clusters[song_dict[songid]['label']], song_dict, songid, 8, 10)
@@ -24,9 +26,9 @@ def test_recommend(entered_ids, ids2test, centroids=None, song_dict=None):
             parameter_ids.append(i)
         song_array = get_all_songinfos(ids2test=parameter_ids)
         song_dict = build_song_dict(song_array)
-    clusters = build_song_clusters(song_dict)
     if centroids is None:
         centroids = get_all_centroids()
+    clusters = build_song_clusters(song_dict, len(centroids))
     centr_distances = get_centroid_distances(centroids)
     for songid in entered_ids:
         distances = []
@@ -57,9 +59,9 @@ def test_recommend(entered_ids, ids2test, centroids=None, song_dict=None):
     return point_dict
 
 
-def build_song_clusters(song_dict):
+def build_song_clusters(song_dict, count):
     clusters = {}
-    for i in range(0, 35):
+    for i in range(0, count):
         cluster = []
         for song in song_dict:
             if song_dict[song]['label'] == i:

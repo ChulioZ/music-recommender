@@ -1,0 +1,122 @@
+Führe k-means++-Test mit 10 Cluster-Zentren aus...
+
+Ergebnisse für k-means++ mit 10 Cluster-Zentren, Durchlauf 1:
+Silhouette Score Nr. 0: 0.25837511362808185
+Silhouette Score Nr. 1: 0.2548003535279613
+Silhouette Score Nr. 2: 0.25599864826745783
+Silhouette Score Nr. 3: 0.26016150929578546
+Silhouette Score Nr. 4: 0.25787241070952077
+Silhouette Score Nr. 5: 0.25510690225719057
+Silhouette Score Nr. 6: 0.2595233924778322
+Silhouette Score Nr. 7: 0.2554692210120162
+Silhouette Score Nr. 8: 0.25674398962411266
+Silhouette Score Nr. 9: 0.2574511098822655
+Durschnittliche Silhouette Score: 0.2571502650682224
+Durchschnittliche Punktzahl der gemochten Songs: 9.398461355331767
+Durchschnittliche Punktzahl der nicht gemochten Songs: 9.679610087818872
+Erfolgsquote für selbes Cluster der gemochten Songs: 95.39170506912443 %
+Erfolgsquote für selbes Cluster der nicht gemochten Songs: 99.53917050691244 %
+Erfolgsquote für 10-%-Mean-Cluster der gemochten Songs: 2.3041474654377883 %
+Erfolgsquote für 10-%-Mean-Cluster der nicht gemochten Songs: 0.0 %
+Erfolgsquote für 25-%-Mean-Cluster der gemochten Songs: 0.0 %
+Erfolgsquote für 25-%-Mean-Cluster der nicht gemochten Songs: 0.0 %
+
+
+
+Führe k-means++-Test mit 25 Cluster-Zentren aus...
+
+Ergebnisse für k-means++ mit 25 Cluster-Zentren, Durchlauf 10:
+Silhouette Score Nr. 0: 0.21281547154690392
+Silhouette Score Nr. 1: 0.21232128947913206
+Silhouette Score Nr. 2: 0.21468632806536275
+Silhouette Score Nr. 3: 0.21327024587476198
+Silhouette Score Nr. 4: 0.21496085670887852
+Silhouette Score Nr. 5: 0.2131783966061436
+Silhouette Score Nr. 6: 0.2135640849609208
+Silhouette Score Nr. 7: 0.21387925675222988
+Silhouette Score Nr. 8: 0.21547300947999287
+Silhouette Score Nr. 9: 0.21135830230974528
+Durschnittliche Silhouette Score: 0.21355072417840715
+Durchschnittliche Punktzahl der gemochten Songs: 8.48637500433381
+Durchschnittliche Punktzahl der nicht gemochten Songs: 9.260824663825964
+Erfolgsquote für selbes Cluster der gemochten Songs: 82.48847926267281 %
+Erfolgsquote für selbes Cluster der nicht gemochten Songs: 92.62672811059907 %
+Erfolgsquote für 10-%-Mean-Cluster der gemochten Songs: 5.990783410138248 %
+Erfolgsquote für 10-%-Mean-Cluster der nicht gemochten Songs: 2.3041474654377883 %
+Erfolgsquote für 25-%-Mean-Cluster der gemochten Songs: 0.0 %
+Erfolgsquote für 25-%-Mean-Cluster der nicht gemochten Songs: 0.0 %
+
+
+
+Führe k-means++-Test mit 35 Cluster-Zentren aus...
+
+Ergebnisse für k-means++ mit 35 Cluster-Zentren, Durchlauf 10:
+Silhouette Score Nr. 0: 0.20567224209896381
+Silhouette Score Nr. 1: 0.20803990357868118
+Silhouette Score Nr. 2: 0.208199492357697
+Silhouette Score Nr. 3: 0.20585494995264297
+Silhouette Score Nr. 4: 0.2061191732285657
+Silhouette Score Nr. 5: 0.20574958107335434
+Silhouette Score Nr. 6: 0.20494167093863871
+Silhouette Score Nr. 7: 0.20371786085617502
+Silhouette Score Nr. 8: 0.2035817911145784
+Silhouette Score Nr. 9: 0.2082695301676295
+Durschnittliche Silhouette Score: 0.20601461953669267
+Durchschnittliche Punktzahl der gemochten Songs: 8.395951569912489
+Durchschnittliche Punktzahl der nicht gemochten Songs: 9.381631019826242
+Erfolgsquote für selbes Cluster der gemochten Songs: 79.26267281105991 %
+Erfolgsquote für selbes Cluster der nicht gemochten Songs: 95.39170506912443 %
+Erfolgsquote für 10-%-Mean-Cluster der gemochten Songs: 8.294930875576037 %
+Erfolgsquote für 10-%-Mean-Cluster der nicht gemochten Songs: 2.3041474654377883 %
+Erfolgsquote für 25-%-Mean-Cluster der gemochten Songs: 0.0 %
+Erfolgsquote für 25-%-Mean-Cluster der nicht gemochten Songs: 0.0 %
+
+
+
+Führe k-means++-Test mit 50 Cluster-Zentren aus...
+
+Ergebnisse für k-means++ mit 50 Cluster-Zentren, Durchlauf 10:
+Silhouette Score Nr. 0: 0.2024551686197465
+Silhouette Score Nr. 1: 0.19909558640036812
+Silhouette Score Nr. 2: 0.19723043011619534
+Silhouette Score Nr. 3: 0.20274055813120825
+Silhouette Score Nr. 4: 0.1988696099744584
+Silhouette Score Nr. 5: 0.19642425891755533
+Silhouette Score Nr. 6: 0.19543431093484973
+Silhouette Score Nr. 7: 0.19931033318072697
+Silhouette Score Nr. 8: 0.20082026569828873
+Silhouette Score Nr. 9: 0.19976943522545404
+Durschnittliche Silhouette Score: 0.19921499571988513
+Durchschnittliche Punktzahl der gemochten Songs: 7.821198708990684
+Durchschnittliche Punktzahl der nicht gemochten Songs: 9.112947583041679
+Erfolgsquote für selbes Cluster der gemochten Songs: 71.42857142857143 %
+Erfolgsquote für selbes Cluster der nicht gemochten Songs: 91.70506912442397 %
+Erfolgsquote für 10-%-Mean-Cluster der gemochten Songs: 8.755760368663594 %
+Erfolgsquote für 10-%-Mean-Cluster der nicht gemochten Songs: 2.7649769585253456 %
+Erfolgsquote für 25-%-Mean-Cluster der gemochten Songs: 0.0 %
+Erfolgsquote für 25-%-Mean-Cluster der nicht gemochten Songs: 0.0 %
+
+
+
+Führe k-means++-Test mit 100 Cluster-Zentren aus...
+
+Ergebnisse für k-means++ mit 100 Cluster-Zentren, Durchlauf 10:
+Silhouette Score Nr. 0: 0.18557828412664068
+Silhouette Score Nr. 1: 0.18869595784000687
+Silhouette Score Nr. 2: 0.18544536489538907
+Silhouette Score Nr. 3: 0.18510308001018885
+Silhouette Score Nr. 4: 0.1857618128183112
+Silhouette Score Nr. 5: 0.18937191491833755
+Silhouette Score Nr. 6: 0.18457225005689742
+Silhouette Score Nr. 7: 0.18763791091116838
+Silhouette Score Nr. 8: 0.18830277894623515
+Silhouette Score Nr. 9: 0.1850863695824275
+Durschnittliche Silhouette Score: 0.18655557241056026
+Durchschnittliche Punktzahl der gemochten Songs: 7.168451061326241
+Durchschnittliche Punktzahl der nicht gemochten Songs: 8.418183561718868
+Erfolgsquote für selbes Cluster der gemochten Songs: 61.75115207373272 %
+Erfolgsquote für selbes Cluster der nicht gemochten Songs: 79.72350230414746 %
+Erfolgsquote für 10-%-Mean-Cluster der gemochten Songs: 7.373271889400922 %
+Erfolgsquote für 10-%-Mean-Cluster der nicht gemochten Songs: 4.147465437788019 %
+Erfolgsquote für 25-%-Mean-Cluster der gemochten Songs: 1.3824884792626728 %
+Erfolgsquote für 25-%-Mean-Cluster der nicht gemochten Songs: 2.3041474654377883 %

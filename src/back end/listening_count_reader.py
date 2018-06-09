@@ -26,17 +26,24 @@ def get_listening_ids():
     for user_id in listened_songs:
         if len(listened_songs[user_id]['good']) > 9:
             random.shuffle(listened_songs[user_id]['good'])
+            random.shuffle(listened_songs[user_id]['bad'])
             factor = random.uniform(0.1, 0.9)
-            train_number = int(factor * len(listened_songs[user_id]['good']))
+            train_number = min(max(int(
+                factor * len(listened_songs[user_id]['good'])), 1), len(listened_songs[user_id]['good']) - 1, 10)
             ent_array = []
-            test_array = []
+            test_array_good = []
+            test_array_bad = []
+            j = 0
             for i in range(0, len(listened_songs[user_id]['good'])):
                 if i <= train_number:
                     ent_array.append(listened_songs[user_id]['good'][i])
-                else:
-                    test_array.append(listened_songs[user_id]['good'][i])
+                elif len(listened_songs[user_id]['bad']) > j:
+                    test_array_good.append(listened_songs[user_id]['good'][i])
+                    j += 1
+            for i in range(0, len(test_array_good)):
+                test_array_bad.append(listened_songs[user_id]['bad'][i])
             entered_ids.append(ent_array)
-            test_ids_good.append(test_array)
-            test_ids_bad.append(listened_songs[user_id]['bad'])
+            test_ids_good.append(test_array_good)
+            test_ids_bad.append(test_array_bad)
 
     return entered_ids, test_ids_good, test_ids_bad
