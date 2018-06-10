@@ -14,7 +14,7 @@ def test_kmeans(entered_ids, test_ids_good, test_ids_bad):
     for i in range(0, 3):
         rnd_users = random.sample(
             range(0, len(entered_ids)), min(25, len(entered_ids)))
-        for count in [10, 25, 35, 50, 100]:
+        for count in [2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 35, 200]:
             print('Führe k-means++-Test mit ' +
                   str(count)+' Cluster-Zentren aus...\n')
             labels, centroids = do_kmeans(cluster_parameters, count)
@@ -31,8 +31,9 @@ def test_kmeans(entered_ids, test_ids_good, test_ids_bad):
             cnt_cluster_25_bad = 0
             cnt_cluster_away_bad = 0
             for index in rnd_users:
+                test_ids = test_ids_good[index] + test_ids_bad[index]
                 point_dict = test_recommend(
-                    entered_ids[index], test_ids_good[index], centroids=centroids, song_dict=song_dict)
+                    entered_ids[index], test_ids, centroids=centroids, song_dict=song_dict)
                 for song_id in test_ids_good[index]:
                     points = point_dict[song_id]
                     point_array_good.append(points)
@@ -44,9 +45,6 @@ def test_kmeans(entered_ids, test_ids_good, test_ids_bad):
                         cnt_cluster_25_good += 1
                     else:
                         cnt_cluster_away_good += 1
-            for index in rnd_users:
-                point_dict = test_recommend(
-                    entered_ids[index], test_ids_bad[index], centroids=centroids, song_dict=song_dict)
                 for song_id in test_ids_bad[index]:
                     points = point_dict[song_id]
                     point_array_bad.append(points)
