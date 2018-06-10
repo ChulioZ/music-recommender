@@ -29,7 +29,7 @@ def get_listening_ids():
             random.shuffle(listened_songs[user_id]['bad'])
             factor = random.uniform(0.1, 0.9)
             train_number = min(max(int(
-                factor * len(listened_songs[user_id]['good'])), 1), len(listened_songs[user_id]['good']) - 1, 10)
+                factor * len(listened_songs[user_id]['good'])), 1), len(listened_songs[user_id]['good']) - 1, 3)
             ent_array = []
             test_array_good = []
             test_array_bad = []
