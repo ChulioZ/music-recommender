@@ -66,7 +66,7 @@ def build_song_clusters(song_dict, count):
         for song in song_dict:
             if song_dict[song]['label'] == i:
                 cluster.append(song)
-        clusters[i] = (cluster)
+        clusters[i] = cluster
     return clusters
 
 
