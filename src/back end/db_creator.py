@@ -27,7 +27,7 @@ def change_db():
     cursor = connection.cursor()
 
     # replace with the SQL command you want to execute
-    #cursor.execute("ALTER TABLE songs ADD label int;")
+    #cursor.execute("SELECT loudness FROM songs;")
     connection.commit()
     cursor.close()
     connection.close()
@@ -60,54 +60,53 @@ def build_db():
                     h5).decode('UTF-8').replace("'", "")
                 song_infos[i]['artist'] = GETTERS.get_artist_name(
                     h5).decode('UTF-8').replace("'", "")
-                song_infos[i]['simartists'] = GETTERS.get_similar_artists(h5)
-                if math.isnan(GETTERS.get_time_signature(h5)):
+                time_sig = GETTERS.get_time_signature(h5)
+                if math.isnan(time_sig):
                     song_infos[i]['timeSig'] = np.NaN
                     missing_timeSig_values += 1
                 else:
-                    song_infos[i]['timeSig'] = GETTERS.get_time_signature(h5)
-                if math.isnan(GETTERS.get_key(h5)):
+                    song_infos[i]['timeSig'] = time_sig
+                key = GETTERS.get_key(h5)
+                if math.isnan(key):
                     song_infos[i]['songkey'] = np.NaN
                     missing_songkey_values += 1
                 else:
-                    song_infos[i]['songkey'] = GETTERS.get_key(h5)
-                if math.isnan(GETTERS.get_mode(h5)):
+                    song_infos[i]['songkey'] = key
+                mode = GETTERS.get_mode(h5)
+                if math.isnan(mode):
                     song_infos[i]['mode'] = np.NaN
                     missing_mode_values += 1
                 else:
-                    song_infos[i]['mode'] = GETTERS.get_mode(h5)
-                if math.isnan(GETTERS.get_loudness(h5)):
+                    song_infos[i]['mode'] = mode
+                loudness = GETTERS.get_loudness(h5)
+                if math.isnan(loudness):
                     song_infos[i]['loudness'] = np.NaN
                     missing_loudness_values += 1
                 else:
-                    song_infos[i]['loudness'] = GETTERS.get_loudness(h5)
-                if math.isnan(GETTERS.get_tempo(h5)):
+                    song_infos[i]['loudness'] = loudness
+                tempo = GETTERS.get_tempo(h5)
+                if math.isnan(tempo):
                     song_infos[i]['tempo'] = np.NaN
                     missing_tempo_values += 1
                 else:
-                    song_infos[i]['tempo'] = GETTERS.get_tempo(h5)
-                if math.isnan(GETTERS.get_song_hotttnesss(h5)):
+                    song_infos[i]['tempo'] = tempo
+                hotttnesss = GETTERS.get_song_hotttnesss(h5)
+                if math.isnan(hotttnesss):
                     song_infos[i]['hotttnesss'] = np.NaN
                     missing_hotttnesss_values += 1
                 else:
-                    song_infos[i]['hotttnesss'] = GETTERS.get_song_hotttnesss(
-                        h5)
+                    song_infos[i]['hotttnesss'] = hotttnesss
                 h5.close()
                 print('Song'+str(i)+' eingelesen')
             else:
                 print('Song-ID doppelt')
 
-    # normalize the values
-    for key in ['loudness', 'hotttnesss', 'tempo', 'timeSig', 'songkey', 'mode']:
-        max_value = -float("inf")
-        min_value = float("inf")
-        for index in song_infos:
-            max_value = max(max_value, float(song_infos[index][key]))
-            min_value = min(min_value, float(song_infos[index][key]))
-        for index in song_infos:
-            song_infos[index][key] = (
-                float(song_infos[index][key]) - min_value)/(max_value - min_value) * 100
-            print('Song'+str(index)+'normalisiert')
+    hotttnesss_values = np.array([])
+    timeSig_values = np.array([])
+    songkey_values = np.array([])
+    mode_values = np.array([])
+    loudness_values = np.array([])
+    tempo_values = np.array([])
 
     # impute missing values via fancyimpute MICE imputation and store the new values in the dictionary
     song_array = np.array([[song_infos[1]['timeSig'], song_infos[1]['songkey'], song_infos[1]
@@ -120,13 +119,37 @@ def build_db():
     mc = MICE()
     a = mc.complete(song_array)
     for song in range(1, i+1):
-        song_infos[song]['timeSig'] = a[song-1, 0]
-        song_infos[song]['songkey'] = a[song-1, 1]
-        song_infos[song]['mode'] = a[song-1, 2]
-        song_infos[song]['loudness'] = a[song-1, 3]
-        song_infos[song]['tempo'] = a[song-1, 4]
-        song_infos[song]['hotttnesss'] = a[song-1, 5]
+        time_sig = a[song-1, 0]
+        song_infos[song]['timeSig'] = time_sig
+        np.append(timeSig_values, time_sig)
+        songkey = a[song-1, 1]
+        song_infos[song]['songkey'] = songkey
+        np.append(songkey_values, songkey)
+        mode = a[song-1, 2]
+        song_infos[song]['mode'] = mode
+        np.append(mode_values, mode)
+        loudness = a[song-1, 3]
+        song_infos[song]['loudness'] = loudness
+        np.append(loudness_values, loudness)
+        tempo = a[song-1, 4]
+        song_infos[song]['tempo'] = tempo
+        np.append(tempo_values, tempo)
+        hotttnesss = a[song-1, 5]
+        song_infos[song]['hotttnesss'] = hotttnesss
+        np.append(hotttnesss_values, hotttnesss)
         print('songinfos'+str(song)+'aktualisiert')
+
+    # normalize the values
+    for key, array in zip(['loudness', 'hotttnesss', 'tempo', 'timeSig', 'songkey', 'mode'], [hotttnesss_values, timeSig_values, songkey_values, mode_values, loudness_values, tempo_values]):
+        max_value = -float("inf")
+        min_value = float("inf")
+        for index in song_infos:
+            max_value = max(max_value, float(song_infos[index][key]))
+            min_value = min(min_value, float(song_infos[index][key]))
+        for index in song_infos:
+            song_infos[index][key] = (
+                float(song_infos[index][key]) - np.mean(array))/(max_value - min_value) * 100
+            print('Song'+str(index)+'normalisiert')
 
     # connect to the data base
     server = 'mrd.database.windows.net'
@@ -179,7 +202,7 @@ def add_labels_to_db(labels, ids):
 
     # save each label in the data base
     format_str = """UPDATE songs SET label = {label} WHERE id={id};"""
-    for i in range(0,len(labels)):
+    for i in range(0, len(labels)):
         sql_command = format_str.format(label=labels[i], id=ids[i])
         cursor.execute(sql_command)
         print('Label'+str(i)+' in DB geschrieben')
