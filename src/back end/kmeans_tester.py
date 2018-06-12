@@ -1,101 +1,71 @@
 from clustering import do_kmeans
-from db_song_getter import get_all_cluster_parameters, get_all_other_parameters, get_all_ids
+from db_song_getter import get_specific_parameters, get_all_ids
 from recommender import test_recommend
 import numpy as np
 import random
 from sklearn import metrics
+import itertools
 
 
 def test_kmeans(entered_ids, test_ids_good, test_ids_bad):
     ids = get_all_ids()
-    cluster_parameters = get_all_cluster_parameters()
-    other_parameters = get_all_other_parameters()
-    print('\n')
-    for i in range(0, 3):
+    parameters = ['loudness', 'hotttnesss', 'tempo', 'timeSig', 'songkey', 'mode']
+    par_combinations = []
+    for i in range(3, len(parameters) + 1):
+        listing = [list(x) for x in itertools.combinations(parameters, i)]
+        par_combinations.extend(listing)
+    for cp in par_combinations:
+        ncp = [item for item in parameters if item not in cp]
+        cluster_parameters = get_specific_parameters(cp)
+        other_parameters = get_specific_parameters(ncp)
+        print('\n')
         rnd_users = random.sample(
             range(0, len(entered_ids)), min(25, len(entered_ids)))
-        for count in [2, 3, 5, 7, 10, 15, 20, 25, 35, 100, 200]:
+        for count in [10, 25, 50, 100, 200]:
             print('Führe k-means++-Test mit ' +
-                  str(count)+' Cluster-Zentren aus...\n')
+                    str(count)+' Cluster-Zentren und folgenden Cluster-Parametern aus...\n')
+            print('Cluster-Parameter: ', cp)
             labels, centroids = do_kmeans(cluster_parameters, count)
             song_dict = build_song_dict(
-                ids, cluster_parameters, other_parameters, labels)
+                ids, parameters, cp, ncp, cluster_parameters, other_parameters, labels)
             point_array_good = []
             point_array_bad = []
-            cnt_cluster_0_good = 0
-            cnt_cluster_10_good = 0
-            cnt_cluster_25_good = 0
-            cnt_cluster_away_good = 0
-            cnt_cluster_0_bad = 0
-            cnt_cluster_10_bad = 0
-            cnt_cluster_25_bad = 0
-            cnt_cluster_away_bad = 0
             for index in rnd_users:
                 test_ids = test_ids_good[index] + test_ids_bad[index]
                 point_dict = test_recommend(
-                    entered_ids[index], test_ids, centroids=centroids, song_dict=song_dict)
+                    entered_ids[index], test_ids, cp, ncp, centroids=centroids, song_dict=song_dict)
                 for song_id in test_ids_good[index]:
                     points = point_dict[song_id]
                     point_array_good.append(points)
-                    if points >= 8:
-                        cnt_cluster_0_good += 1
-                    elif points >= 6:
-                        cnt_cluster_10_good += 1
-                    elif points >= 4:
-                        cnt_cluster_25_good += 1
-                    else:
-                        cnt_cluster_away_good += 1
                 for song_id in test_ids_bad[index]:
                     points = point_dict[song_id]
                     point_array_bad.append(points)
-                    if points >= 8:
-                        cnt_cluster_0_bad += 1
-                    elif points >= 6:
-                        cnt_cluster_10_bad += 1
-                    elif points >= 4:
-                        cnt_cluster_25_bad += 1
-                    else:
-                        cnt_cluster_away_bad += 1
             print('Ergebnisse für k-means++ mit ' + str(count) +
-                  ' Cluster-Zentren, Durchlauf ' + str(i+1)+':')
+                    ' Cluster-Zentren, Durchlauf ' + str(i+1)+':')
             silhouettes = []
             for i in range(0, 10):
                 sil = metrics.silhouette_score(
                     cluster_parameters, labels, metric='euclidean', sample_size=10000)
                 silhouettes.append(sil)
-                print('Silhouette Score Nr. ' + str(i) + ': ' + str(sil))
             print('Durschnittliche Silhouette Score: ' +
-                  str(np.mean(silhouettes)))
+                    str(np.mean(silhouettes)))
             print('Durchschnittliche Punktzahl der gemochten Songs: ' +
-                  str(np.mean(point_array_good)))
+                    str(np.mean(point_array_good)))
             print('Durchschnittliche Punktzahl der nicht gemochten Songs: ' +
-                  str(np.mean(point_array_bad)))
-            print('Erfolgsquote für selbes Cluster der gemochten Songs: ' + str(cnt_cluster_0_good /
-                                                                                (cnt_cluster_0_good + cnt_cluster_10_good + cnt_cluster_25_good + cnt_cluster_away_good) * 100) + ' %')
-            print('Erfolgsquote für selbes Cluster der nicht gemochten Songs: ' + str(cnt_cluster_0_bad /
-                                                                                      (cnt_cluster_0_bad + cnt_cluster_10_bad + cnt_cluster_25_bad + cnt_cluster_away_bad) * 100) + ' %')
-            print('Erfolgsquote für 10-%-Mean-Cluster der gemochten Songs: ' + str(cnt_cluster_10_good /
-                                                                                   (cnt_cluster_0_good + cnt_cluster_10_good + cnt_cluster_25_good + cnt_cluster_away_good) * 100) + ' %')
-            print('Erfolgsquote für 10-%-Mean-Cluster der nicht gemochten Songs: ' + str(cnt_cluster_10_bad /
-                                                                                         (cnt_cluster_0_bad + cnt_cluster_10_bad + cnt_cluster_25_bad + cnt_cluster_away_bad) * 100) + ' %')
-            print('Erfolgsquote für 25-%-Mean-Cluster der gemochten Songs: ' + str(cnt_cluster_25_good /
-                                                                                   (cnt_cluster_0_good + cnt_cluster_10_good + cnt_cluster_25_good + cnt_cluster_away_good) * 100) + ' %')
-            print('Erfolgsquote für 25-%-Mean-Cluster der nicht gemochten Songs: ' + str(cnt_cluster_25_bad /
-                                                                                         (cnt_cluster_0_bad + cnt_cluster_10_bad + cnt_cluster_25_bad + cnt_cluster_away_bad) * 100) + ' %')
+                    str(np.mean(point_array_bad)))
             print('\n\n')
 
 
-def build_song_dict(ids, cluster_parameters, other_parameters, labels):
+def build_song_dict(ids, parameters, cp, ncp, cluster_parameters, other_parameters, labels):
     song_dict = {}
     for song in range(0, len(ids)):
         song_id = ids[song][0]
         song_dict[song_id] = {}
-        song_dict[song_id]['loudness'] = cluster_parameters[song][0]
-        song_dict[song_id]['hotttnesss'] = cluster_parameters[song][1]
-        song_dict[song_id]['tempo'] = cluster_parameters[song][2]
-        song_dict[song_id]['timeSig'] = cluster_parameters[song][3]
-        song_dict[song_id]['songkey'] = cluster_parameters[song][4]
-        song_dict[song_id]['mode'] = other_parameters[song][0]
+        for par in parameters:
+            if par in cp:
+                song_dict[song_id][par] = cluster_parameters[song][cp.index(par)]
+            else:
+                song_dict[song_id][par] = cluster_parameters[song][ncp.index(par)]
         song_dict[song_id]['label'] = labels[song]
         song_dict[song_id]['points'] = 0
     return song_dict

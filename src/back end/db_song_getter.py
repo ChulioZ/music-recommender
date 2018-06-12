@@ -10,16 +10,13 @@ connection = pyodbc.connect('DRIVER={ODBC Driver 13 for SQL Server};SERVER=' +
                             server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD=' + password)
 cursor = connection.cursor()
 
-def get_all_cluster_parameters():
+
+def get_specific_parameters(parameter_list):
     print('Hole alle Cluster-Parameter aus der Datenbank...')
-    param = "SELECT loudness,hotttnesss,tempo,timeSig,songkey FROM songs"
-    cursor.execute(param)
-    return np.array(cursor.fetchall())
-
-
-def get_all_other_parameters():
-    print('Hole alle anderen Parameter aus der Datenbank...')
-    param = "SELECT mode FROM songs"
+    param = "SELECT "
+    for i in range(0, len(parameter_list) - 1):
+        param += parameter_list[i] + ','
+    param += parameter_list[-1] + " FROM songs"
     cursor.execute(param)
     return np.array(cursor.fetchall())
 

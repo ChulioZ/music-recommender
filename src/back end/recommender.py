@@ -5,7 +5,7 @@ import math
 import numpy as np
 
 
-def recommend(entered_ids, centroids=None, song_dict=None):
+def recommend(entered_ids, cp, ncp, centroids=None, song_dict=None):
     if song_dict is None:
         song_array = get_all_songinfos()
         song_dict = build_song_dict(song_array)
@@ -14,12 +14,12 @@ def recommend(entered_ids, centroids=None, song_dict=None):
     clusters = build_song_clusters(song_dict, len(centroids))
     for songid in entered_ids:
         song_dict = distribute_points(
-            clusters[song_dict[songid]['label']], song_dict, songid, 8, 10)
+            clusters[song_dict[songid]['label']], song_dict, songid, 8, 10, cp, ncp)
     point_dict = build_point_dict(song_dict)
     return point_dict
 
 
-def test_recommend(entered_ids, ids2test, centroids=None, song_dict=None):
+def test_recommend(entered_ids, ids2test, cp, ncp, centroids=None, song_dict=None):
     if song_dict is None:
         parameter_ids = entered_ids
         for i in ids2test:
@@ -40,21 +40,17 @@ def test_recommend(entered_ids, ids2test, centroids=None, song_dict=None):
         for i in range(0, len(centroids)):
             if i == song_dict[songid]['label']:
                 song_dict = distribute_points(
-                    clusters[i], song_dict, songid, 8, 10)
+                    clusters[i], song_dict, songid, 8, 10, cp, ncp)
             else:
                 if centr_distances[song_dict[songid]['label']]['distances'][i] <= 0.1 * avg_distance:
                     song_dict = distribute_points(
-                        clusters[i], song_dict, songid, 6, 7)
+                        clusters[i], song_dict, songid, 6, 7, cp, ncp)
                 elif centr_distances[song_dict[songid]['label']]['distances'][i] <= 0.25 * avg_distance:
                     song_dict = distribute_points(
-                        clusters[i], song_dict, songid, 4, 5)
+                        clusters[i], song_dict, songid, 4, 5, cp, ncp)
                 elif centr_distances[song_dict[songid]['label']]['distances'][i] <= 0.5 * avg_distance:
                     song_dict = distribute_points(
-                        clusters[i], song_dict, songid, 2, 3)
-                else:
-                    for sid in clusters[i]:
-                        song_dict[sid]['points'] = max(
-                            song_dict[sid]['points'], 0)
+                        clusters[i], song_dict, songid, 2, 3, cp, ncp)
     point_dict = build_point_dict(song_dict)
     return point_dict
 
@@ -85,29 +81,37 @@ def build_song_dict(song_array):
     return song_dict
 
 
-def distribute_points(ids_in_cluster, song_dict, songid, min_points, max_points):
+def distribute_points(ids_in_cluster, song_dict, songid, min_points, max_points, cp, ncp):
     max_distance = -float("inf")
     min_distance = float("inf")
+    ncp_distances = []
+    for key in ncp:
+        ncp_distances.append([])
     for sid in ids_in_cluster:
         if sid is not songid:
             distance = 0
-            for key in ['loudness', 'hotttnesss', 'tempo', 'timeSig', 'songkey']:
+            for key in cp:
                 distance += math.pow(song_dict[songid]
                                      [key] - song_dict[sid][key], 2)
             distance = math.sqrt(distance)
             song_dict[sid]['distance'] = distance
             max_distance = max(max_distance, distance)
             min_distance = min(min_distance, distance)
+            for i in range(0, len(ncp)):
+                ncp_distances[i].extend(song_dict[songid][ncp[i]] - song_dict[sid][ncp[i]])
     for sid in ids_in_cluster:
-        diff = max_distance - song_dict[sid]['distance']
         if(max_distance == min_distance):
             points = max_points
         else:
+            diff = max_distance - song_dict[sid]['distance']
             points = diff / (max_distance - min_distance) * \
                 (max_points - min_points) + min_points
-        points *= 5/6
-        if song_dict[songid]['mode'] == song_dict[sid]['mode']:
-            points += 1/6*max_points
+        points *= len(cp)/6
+        for i in range(0, len(ncp)):
+            if song_dict[songid][ncp[i]] == song_dict[sid][ncp[i]]:
+                points += 1/6*max_points
+            elif song_dict[songid][ncp[i]] - song_dict[sid][ncp[i]] <= 0.1 * np.mean(ncp_distances[i]):
+                points += 1/12*max_points
         song_dict[sid]['points'] = max(song_dict[sid]['points'], points)
     return song_dict
 
