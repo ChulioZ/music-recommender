@@ -12,7 +12,7 @@ cursor = connection.cursor()
 
 
 def get_specific_parameters(parameter_list):
-    print('Hole alle Cluster-Parameter aus der Datenbank...')
+    print('Hole spezifische Parameter aus der Datenbank...')
     param = "SELECT "
     for i in range(0, len(parameter_list) - 1):
         param += parameter_list[i] + ','

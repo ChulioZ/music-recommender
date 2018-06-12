@@ -29,7 +29,7 @@ def test_recommend(entered_ids, ids2test, cp, ncp, centroids=None, song_dict=Non
     if centroids is None:
         centroids = get_all_centroids()
     clusters = build_song_clusters(song_dict, len(centroids))
-    centr_distances = get_centroid_distances(centroids)
+    centr_distances = get_centroid_distances(centroids, cp)
     for songid in entered_ids:
         distances = []
         for i in range(0, len(centroids)):
@@ -98,7 +98,7 @@ def distribute_points(ids_in_cluster, song_dict, songid, min_points, max_points,
             max_distance = max(max_distance, distance)
             min_distance = min(min_distance, distance)
             for i in range(0, len(ncp)):
-                ncp_distances[i].extend(song_dict[songid][ncp[i]] - song_dict[sid][ncp[i]])
+                ncp_distances[i].extend([song_dict[songid][ncp[i]] - song_dict[sid][ncp[i]]])
     for sid in ids_in_cluster:
         if(max_distance == min_distance):
             points = max_points
