@@ -14,7 +14,7 @@ def test_kmeans(entered_ids, test_ids_good, test_ids_bad):
     for i in range(0, 3):
         rnd_users = random.sample(
             range(0, len(entered_ids)), min(25, len(entered_ids)))
-        for count in [2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 35, 200]:
+        for count in [2, 3, 5, 7, 10, 15, 20, 25, 35, 100, 200]:
             print('Führe k-means++-Test mit ' +
                   str(count)+' Cluster-Zentren aus...\n')
             labels, centroids = do_kmeans(cluster_parameters, count)

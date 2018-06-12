@@ -9,6 +9,7 @@ import mysql.connector as mc
 import pyodbc
 from os.path import dirname, abspath
 from mice import MICE
+import json
 
 file_path = dirname(dirname(dirname(abspath(__file__))))
 msd_path = os.path.join(file_path, 'msd')
@@ -27,7 +28,8 @@ def change_db():
     cursor = connection.cursor()
 
     # replace with the SQL command you want to execute
-    #cursor.execute("SELECT loudness FROM songs;")
+    cursor.execute("SELECT loudness FROM songs;")
+    print(cursor.fetchall())
     connection.commit()
     cursor.close()
     connection.close()
@@ -37,6 +39,7 @@ def build_db():
     start = time.time()
 
     # read all relevant infos from the songs and store them in a dictionary
+    print('Lese Song-Infos aus den h5-Dateien ein ...')
     song_infos = {}
     i = 0
     ids = set()
@@ -97,9 +100,6 @@ def build_db():
                 else:
                     song_infos[i]['hotttnesss'] = hotttnesss
                 h5.close()
-                print('Song'+str(i)+' eingelesen')
-            else:
-                print('Song-ID doppelt')
 
     hotttnesss_values = np.array([])
     timeSig_values = np.array([])
@@ -109,38 +109,40 @@ def build_db():
     tempo_values = np.array([])
 
     # impute missing values via fancyimpute MICE imputation and store the new values in the dictionary
+    print('Konkateniere die Daten zu einem Array für die Imputation ...')
     song_array = np.array([[song_infos[1]['timeSig'], song_infos[1]['songkey'], song_infos[1]
                             ['mode'], song_infos[1]['loudness'], song_infos[1]['tempo'], song_infos[1]['hotttnesss']]])
     for index in range(2, i+1):
         newar = np.array([[song_infos[index]['timeSig'], song_infos[index]['songkey'], song_infos[index]['mode'],
                            song_infos[index]['loudness'], song_infos[index]['tempo'], song_infos[index]['hotttnesss']]])
         song_array = np.concatenate((song_array, newar))
-        print('song'+str(index)+'konkateniert')
+    print('Führe MICE-Imputation aus ...')
     mc = MICE()
     a = mc.complete(song_array)
+    print('Aktualisiere Song-Infos mit imputed Daten ...')
     for song in range(1, i+1):
         time_sig = a[song-1, 0]
         song_infos[song]['timeSig'] = time_sig
-        np.append(timeSig_values, time_sig)
+        timeSig_values = np.append(timeSig_values, time_sig)
         songkey = a[song-1, 1]
         song_infos[song]['songkey'] = songkey
-        np.append(songkey_values, songkey)
+        songkey_values = np.append(songkey_values, songkey)
         mode = a[song-1, 2]
         song_infos[song]['mode'] = mode
-        np.append(mode_values, mode)
+        mode_values = np.append(mode_values, mode)
         loudness = a[song-1, 3]
         song_infos[song]['loudness'] = loudness
-        np.append(loudness_values, loudness)
+        loudness_values = np.append(loudness_values, loudness)
         tempo = a[song-1, 4]
         song_infos[song]['tempo'] = tempo
-        np.append(tempo_values, tempo)
+        tempo_values = np.append(tempo_values, tempo)
         hotttnesss = a[song-1, 5]
         song_infos[song]['hotttnesss'] = hotttnesss
-        np.append(hotttnesss_values, hotttnesss)
-        print('songinfos'+str(song)+'aktualisiert')
+        hotttnesss_values = np.append(hotttnesss_values, hotttnesss)
 
     # normalize the values
-    for key, array in zip(['loudness', 'hotttnesss', 'tempo', 'timeSig', 'songkey', 'mode'], [hotttnesss_values, timeSig_values, songkey_values, mode_values, loudness_values, tempo_values]):
+    print('Normalisiere die Daten ...')
+    for key, array in zip(['loudness', 'hotttnesss', 'tempo', 'timeSig', 'songkey', 'mode'], [loudness_values, hotttnesss_values, tempo_values, timeSig_values, songkey_values, mode_values]):
         max_value = -float("inf")
         min_value = float("inf")
         for index in song_infos:
@@ -148,8 +150,11 @@ def build_db():
             min_value = min(min_value, float(song_infos[index][key]))
         for index in song_infos:
             song_infos[index][key] = (
-                float(song_infos[index][key]) - np.mean(array))/(max_value - min_value) * 100
-            print('Song'+str(index)+'normalisiert')
+                float(song_infos[index][key]) - np.mean(array)) / (max_value - min_value) * 100
+
+    print('Speichere JSON ...')
+    with open(file_path + '/msd_data.txt', 'w') as outfile:
+        json.dump(song_infos, outfile)
 
     # connect to the data base
     server = 'mrd.database.windows.net'
@@ -163,9 +168,9 @@ def build_db():
     # delete old data in the data base
     print('lösche alte Daten ...')
     cursor.execute("DELETE FROM songs;")
-    print('Daten gelöscht')
 
     # save each song in the data base
+    print('Schreibe Songs in Datenbank ...')
     for key in song_infos:
         format_str = """INSERT INTO songs (id, title, artist, loudness, hotttnesss, tempo, timeSig, songkey, mode)
         VALUES ('{id}', '{title}', '{artist}', {loudness}, {hotttnesss}, {tempo}, {timeSig}, {songkey}, {mode});"""
@@ -173,18 +178,17 @@ def build_db():
         sql_command = format_str.format(id=song_infos[key]['id'], title=song_infos[key]['title'], artist=song_infos[key]['artist'], loudness=song_infos[key]['loudness'], hotttnesss=song_infos[key]
                                         ['hotttnesss'], tempo=song_infos[key]['tempo'], timeSig=song_infos[key]['timeSig'], songkey=song_infos[key]['songkey'], mode=song_infos[key]['mode'])
         cursor.execute(sql_command)
-        print('Song'+str(key)+' in DB geschrieben')
     connection.commit()
 
     cursor.close()
     connection.close()
     print('fertig')
-    print(str(missing_hotttnesss_values)+'missing hotttnesss values')
-    print(str(missing_loudness_values)+'missing loudness values')
-    print(str(missing_mode_values)+'missing mode values')
-    print(str(missing_songkey_values)+'missing songkey values')
-    print(str(missing_tempo_values)+'missing tempo values')
-    print(str(missing_timeSig_values)+'missing timeSig values')
+    print(str(missing_hotttnesss_values) + ' missing hotttnesss values')
+    print(str(missing_loudness_values) + ' missing loudness values')
+    print(str(missing_mode_values) + ' missing mode values')
+    print(str(missing_songkey_values) + ' missing songkey values')
+    print(str(missing_tempo_values) + ' missing tempo values')
+    print(str(missing_timeSig_values) + ' missing timeSig values')
 
     end = time.time()
     print(str(datetime.timedelta(seconds=end-start)))
