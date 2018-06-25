@@ -28,7 +28,7 @@ def change_db():
     cursor = connection.cursor()
 
     # replace with the SQL command you want to execute
-    cursor.execute("SELECT loudness FROM songs;")
+    cursor.execute("SELECT MIN(loudness) FROM songs;")
     print(cursor.fetchall())
     connection.commit()
     cursor.close()

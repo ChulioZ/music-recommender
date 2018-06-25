@@ -3,14 +3,10 @@ from centroid_distance_getter import get_centroid_distances
 from clustering import do_kmeans
 import math
 import numpy as np
+from functools import reduce
 
 
-def recommend(entered_ids, cp, ncp, centroids=None, song_dict=None):
-    if song_dict is None:
-        song_array = get_all_songinfos()
-        song_dict = build_song_dict(song_array)
-    if centroids is None:
-        centroids = get_all_centroids()
+def recommend(entered_ids, cp, ncp, song_dict, centroids):
     clusters = build_song_clusters(song_dict, len(centroids))
     for songid in entered_ids:
         song_dict = distribute_points(
@@ -19,38 +15,30 @@ def recommend(entered_ids, cp, ncp, centroids=None, song_dict=None):
     return point_dict
 
 
-def test_recommend(entered_ids, ids2test, cp, ncp, centroids=None, song_dict=None):
-    if song_dict is None:
-        parameter_ids = entered_ids
-        for i in ids2test:
-            parameter_ids.append(i)
-        song_array = get_all_songinfos(ids2test=parameter_ids)
-        song_dict = build_song_dict(song_array)
-    if centroids is None:
-        centroids = get_all_centroids()
+def test_recommend(entered_ids, ids2test, cp, ncp, song_dict, centroids):
     clusters = build_song_clusters(song_dict, len(centroids))
     centr_distances = get_centroid_distances(centroids, cp)
     for songid in entered_ids:
+        song_label = song_dict[songid]['label']
         distances = []
         for i in range(0, len(centroids)):
-            if i != song_dict[songid]['label']:
+            if i != song_label:
                 distances.append(
-                    centr_distances[song_dict[songid]['label']]['distances'][i])
+                    centr_distances[song_label]['distances'][i])
         avg_distance = np.mean(distances)
         for i in range(0, len(centroids)):
-            if i == song_dict[songid]['label']:
+            if i == song_label:
                 song_dict = distribute_points(
-                    clusters[i], song_dict, songid, 8, 10, cp, ncp)
-            else:
-                if centr_distances[song_dict[songid]['label']]['distances'][i] <= 0.1 * avg_distance:
-                    song_dict = distribute_points(
-                        clusters[i], song_dict, songid, 6, 7, cp, ncp)
-                elif centr_distances[song_dict[songid]['label']]['distances'][i] <= 0.25 * avg_distance:
-                    song_dict = distribute_points(
-                        clusters[i], song_dict, songid, 4, 5, cp, ncp)
-                elif centr_distances[song_dict[songid]['label']]['distances'][i] <= 0.5 * avg_distance:
-                    song_dict = distribute_points(
-                        clusters[i], song_dict, songid, 2, 3, cp, ncp)
+                    list(reduce(set.intersection, map(set, [clusters[i], ids2test]))), song_dict, songid, 8, 10, cp, ncp)
+            elif centr_distances[song_label]['distances'][i] <= 0.1 * avg_distance:
+                song_dict = distribute_points(
+                    list(reduce(set.intersection, map(set, [clusters[i], ids2test]))), song_dict, songid, 6, 7, cp, ncp)
+            elif centr_distances[song_label]['distances'][i] <= 0.25 * avg_distance:
+                song_dict = distribute_points(
+                    list(reduce(set.intersection, map(set, [clusters[i], ids2test]))), song_dict, songid, 4, 5, cp, ncp)
+            elif centr_distances[song_label]['distances'][i] <= 0.5 * avg_distance:
+                song_dict = distribute_points(
+                    list(reduce(set.intersection, map(set, [clusters[i], ids2test]))), song_dict, songid, 2, 3, cp, ncp)
     point_dict = build_point_dict(song_dict)
     return point_dict
 
@@ -64,21 +52,6 @@ def build_song_clusters(song_dict, count):
                 cluster.append(song)
         clusters[i] = cluster
     return clusters
-
-
-def build_song_dict(song_array):
-    song_dict = {}
-    for song in song_array:
-        song_dict[song[0]] = {}
-        song_dict[song[0]]['loudness'] = float(song[1])
-        song_dict[song[0]]['hotttnesss'] = float(song[2])
-        song_dict[song[0]]['tempo'] = float(song[3])
-        song_dict[song[0]]['timeSig'] = float(song[4])
-        song_dict[song[0]]['songkey'] = float(song[5])
-        song_dict[song[0]]['mode'] = float(song[6])
-        song_dict[song[0]]['label'] = int(song[7])
-        song_dict[song[0]]['points'] = 0
-    return song_dict
 
 
 def distribute_points(ids_in_cluster, song_dict, songid, min_points, max_points, cp, ncp):
@@ -98,7 +71,9 @@ def distribute_points(ids_in_cluster, song_dict, songid, min_points, max_points,
             max_distance = max(max_distance, distance)
             min_distance = min(min_distance, distance)
             for i in range(0, len(ncp)):
-                ncp_distances[i].extend([song_dict[songid][ncp[i]] - song_dict[sid][ncp[i]]])
+                ncp_distances[i].extend(
+                    [song_dict[songid][ncp[i]] - song_dict[sid][ncp[i]]])
+    ncp_distance_means = [np.mean(index) for index in ncp_distances]
     for sid in ids_in_cluster:
         if(max_distance == min_distance):
             points = max_points
@@ -106,12 +81,12 @@ def distribute_points(ids_in_cluster, song_dict, songid, min_points, max_points,
             diff = max_distance - song_dict[sid]['distance']
             points = diff / (max_distance - min_distance) * \
                 (max_points - min_points) + min_points
-        points *= len(cp)/6
+        points *= len(cp)/(len(cp) + len(ncp))
         for i in range(0, len(ncp)):
             if song_dict[songid][ncp[i]] == song_dict[sid][ncp[i]]:
-                points += 1/6*max_points
-            elif song_dict[songid][ncp[i]] - song_dict[sid][ncp[i]] <= 0.1 * np.mean(ncp_distances[i]):
-                points += 1/12*max_points
+                points += 1/(len(cp) + len(ncp))*max_points
+            elif song_dict[songid][ncp[i]] - song_dict[sid][ncp[i]] <= 0.1 * ncp_distance_means[i]:
+                points += 1/(2 * (len(cp) + len(ncp)))*max_points
         song_dict[sid]['points'] = max(song_dict[sid]['points'], points)
     return song_dict
 

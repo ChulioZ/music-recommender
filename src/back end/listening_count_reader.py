@@ -2,48 +2,37 @@ import random
 from os.path import dirname, abspath
 
 
-def get_listening_ids():
+def get_listened_songs():
     file_path = dirname(dirname(dirname(abspath(__file__))))
-    file_path_good = file_path+"\\user_song_listen_numbers_reduced.txt"
-    file_path_bad = file_path+"\\user_song_listen_numbers_ones.txt"
-    file_good = open(file_path_good, "r")
-    file_bad = open(file_path_bad, "r")
+    file_path_listen_numbrers = file_path+"\\user_song_listen_numbers.txt"
+    listen_file = open(file_path_listen_numbrers, "r")
+    limit_a = random.randint(2,6)
+    limit_b = max(random.randint(5, 15), limit_a + 3)
+    limit_c = max(random.randint(10, 25), limit_b + 5)
+    limits = [limit_a, limit_b, limit_c]
     listened_songs = {}
-    for line in file_good:
+    for line in listen_file:
         user_id, song_id, cnt = line.split('\t')
         if user_id not in listened_songs:
             listened_songs[user_id] = {}
             listened_songs[user_id]['good'] = []
             listened_songs[user_id]['bad'] = []
-        listened_songs[user_id]['good'].append(song_id)
-    for line in file_bad:
-        user_id, song_id, cnt = line.split('\t')
-        if user_id in listened_songs and len(listened_songs[user_id]['good']) > 9:
+            listened_songs[user_id]['medium'] = []
+            listened_songs[user_id]['super'] = []
+        count = int(cnt)
+        if count < limit_a:
             listened_songs[user_id]['bad'].append(song_id)
-    entered_ids = []
-    test_ids_good = []
-    test_ids_bad = []
-    for user_id in listened_songs:
-        if len(listened_songs[user_id]['good']) > 9:
-            random.shuffle(listened_songs[user_id]['good'])
-            random.shuffle(listened_songs[user_id]['bad'])
-            factor = random.uniform(0.1, 0.9)
-            train_number = min(max(int(
-                factor * len(listened_songs[user_id]['good'])), 1), len(listened_songs[user_id]['good']) - 1, 3)
-            ent_array = []
-            test_array_good = []
-            test_array_bad = []
-            j = 0
-            for i in range(0, len(listened_songs[user_id]['good'])):
-                if i <= train_number:
-                    ent_array.append(listened_songs[user_id]['good'][i])
-                elif len(listened_songs[user_id]['bad']) > j:
-                    test_array_good.append(listened_songs[user_id]['good'][i])
-                    j += 1
-            for i in range(0, len(test_array_good)):
-                test_array_bad.append(listened_songs[user_id]['bad'][i])
-            entered_ids.append(ent_array)
-            test_ids_good.append(test_array_good)
-            test_ids_bad.append(test_array_bad)
+        elif count < limit_b:
+            listened_songs[user_id]['medium'].append(song_id)
+        elif count < limit_c:
+            listened_songs[user_id]['good'].append(song_id)
+        else:
+            listened_songs[user_id]['super'].append(song_id)
+    keys2remove = []
+    for key in listened_songs:
+        if len(listened_songs[key]['super']) < 1:
+            keys2remove.append(key)
+    for key in keys2remove:
+        listened_songs.pop(key)
 
-    return entered_ids, test_ids_good, test_ids_bad
+    return listened_songs, limits
