@@ -1,0 +1,879 @@
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: []
+Limits für bad/medium/good/super: [5, 12, 17]
+Durchschnittliche Silhouette Score: 0.9995199816491507
+Durchschnittliche Punktzahl der super Songs: 2.282608695652174 46 Songs
+Durchschnittliche Punktzahl der good Songs: 2.1228070175438596 57 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.975609756097561 246 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.2573529411764706 1224 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness']
+Limits für bad/medium/good/super: [5, 12, 17]
+Durchschnittliche Silhouette Score: 0.9994699815450439
+Durchschnittliche Punktzahl der super Songs: 2.396604938271605 81 Songs
+Durchschnittliche Punktzahl der good Songs: 2.651470588235294 85 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.0445205479452055 292 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.9982348326359833 1912 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss']
+Limits für bad/medium/good/super: [5, 12, 17]
+Durchschnittliche Silhouette Score: 0.9994299813672571
+Durchschnittliche Punktzahl der super Songs: 1.8888888888888888 36 Songs
+Durchschnittliche Punktzahl der good Songs: 2.372448979591837 49 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.32579185520362 221 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.271318635607321 1202 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['tempo']
+Limits für bad/medium/good/super: [5, 12, 17]
+Durchschnittliche Silhouette Score: 0.9994999817502688
+Durchschnittliche Punktzahl der super Songs: 3.15625 56 Songs
+Durchschnittliche Punktzahl der good Songs: 3.4949324324324325 74 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.606194690265487 226 Songs
+Durchschnittliche Punktzahl der bad Songs: 3.041911148365465 1193 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss']
+Limits für bad/medium/good/super: [5, 12, 17]
+Durchschnittliche Silhouette Score: 0.9996399813283862
+Durchschnittliche Punktzahl der super Songs: 2.5269886363636362 88 Songs
+Durchschnittliche Punktzahl der good Songs: 1.9800595238095238 84 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.12319587628866 388 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.9243439037725534 1829 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'tempo']
+Limits für bad/medium/good/super: [5, 12, 17]
+Durchschnittliche Silhouette Score: 0.9995099817127322
+Durchschnittliche Punktzahl der super Songs: 3.35625 28 Songs
+Durchschnittliche Punktzahl der good Songs: 2.466810344827586 58 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.7815610859728506 221 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.019625946969697 1056 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [5, 12, 17]
+Durchschnittliche Silhouette Score: 0.9995399813064708
+Durchschnittliche Punktzahl der super Songs: 2.3732558139534885 86 Songs
+Durchschnittliche Punktzahl der good Songs: 2.387867647058823 68 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.250311526479751 321 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.2110729023383766 1454 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [5, 12, 17]
+Durchschnittliche Silhouette Score: 0.9995799811949523
+Durchschnittliche Punktzahl der super Songs: 2.2610507246376805 46 Songs
+Durchschnittliche Punktzahl der good Songs: 2.056122448979592 49 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.408586818757921 263 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.1174680564895763 1487 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: []
+Limits für bad/medium/good/super: [5, 10, 23]
+Durchschnittliche Silhouette Score: 0.9994999814763161
+Durchschnittliche Punktzahl der super Songs: 3.275 40 Songs
+Durchschnittliche Punktzahl der good Songs: 2.556603773584906 212 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.1396011396011394 351 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.9118065433854907 1406 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness']
+Limits für bad/medium/good/super: [5, 10, 23]
+Durchschnittliche Silhouette Score: 0.9994499813827253
+Durchschnittliche Punktzahl der super Songs: 3.0098684210526314 38 Songs
+Durchschnittliche Punktzahl der good Songs: 1.8336206896551723 145 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.9877873563218391 174 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.7003045404208195 903 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss']
+Limits für bad/medium/good/super: [5, 10, 23]
+Durchschnittliche Silhouette Score: 0.9995899814032191
+Durchschnittliche Punktzahl der super Songs: 2.827777777777778 45 Songs
+Durchschnittliche Punktzahl der good Songs: 2.3900316455696204 158 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.298155737704918 244 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.140355603448276 928 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['tempo']
+Limits für bad/medium/good/super: [5, 10, 23]
+Durchschnittliche Silhouette Score: 0.9995499814009088
+Durchschnittliche Punktzahl der super Songs: 2.7436440677966103 59 Songs
+Durchschnittliche Punktzahl der good Songs: 2.4441964285714284 168 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.4613526570048307 207 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.1319444444444446 936 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss']
+Limits für bad/medium/good/super: [5, 10, 23]
+Durchschnittliche Silhouette Score: 0.9995699813817766
+Durchschnittliche Punktzahl der super Songs: 2.2984126984126982 63 Songs
+Durchschnittliche Punktzahl der good Songs: 1.6515624999999998 208 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.477401746724891 229 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.5515708556149734 1496 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'tempo']
+Limits für bad/medium/good/super: [5, 10, 23]
+Durchschnittliche Silhouette Score: 0.9995999817105291
+Durchschnittliche Punktzahl der super Songs: 3.199324324324324 37 Songs
+Durchschnittliche Punktzahl der good Songs: 2.3358527131782947 129 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.5580782312925168 294 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.1138678596008256 1453 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [5, 10, 23]
+Durchschnittliche Silhouette Score: 0.999529981342247
+Durchschnittliche Punktzahl der super Songs: 3.0901315789473682 76 Songs
+Durchschnittliche Punktzahl der good Songs: 2.1990000000000003 150 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.9189591078066917 269 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.8829795021961933 1366 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [5, 10, 23]
+Durchschnittliche Silhouette Score: 0.9995199813586064
+Durchschnittliche Punktzahl der super Songs: 2.61359649122807 57 Songs
+Durchschnittliche Punktzahl der good Songs: 2.240104166666667 128 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.1276433691756274 186 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.8846726190476188 1120 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: []
+Limits für bad/medium/good/super: [3, 8, 24]
+Durchschnittliche Silhouette Score: 0.9995699815544812
+Durchschnittliche Punktzahl der super Songs: 2.289473684210526 38 Songs
+Durchschnittliche Punktzahl der good Songs: 1.5958549222797926 193 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.238961038961039 385 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.8937583001328022 753 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness']
+Limits für bad/medium/good/super: [3, 8, 24]
+Durchschnittliche Silhouette Score: 0.9994899813977283
+Durchschnittliche Punktzahl der super Songs: 2.84375 12 Songs
+Durchschnittliche Punktzahl der good Songs: 1.4889705882352942 170 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.7830739299610896 257 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.862142857142857 875 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss']
+Limits für bad/medium/good/super: [3, 8, 24]
+Durchschnittliche Silhouette Score: 0.9994899815154176
+Durchschnittliche Punktzahl der super Songs: 2.3815789473684212 38 Songs
+Durchschnittliche Punktzahl der good Songs: 2.115343347639485 233 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.2526041666666665 432 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.721146472392638 1304 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['tempo']
+Limits für bad/medium/good/super: [3, 8, 24]
+Durchschnittliche Silhouette Score: 0.9995199813557486
+Durchschnittliche Punktzahl der super Songs: 2.414772727272727 44 Songs
+Durchschnittliche Punktzahl der good Songs: 2.6362951807228914 166 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.4583333333333335 468 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.0481046065259116 1042 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss']
+Limits für bad/medium/good/super: [3, 8, 24]
+Durchschnittliche Silhouette Score: 0.9994299816577371
+Durchschnittliche Punktzahl der super Songs: 2.9154411764705883 34 Songs
+Durchschnittliche Punktzahl der good Songs: 1.588862559241706 211 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.753125 264 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.784757053291536 638 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'tempo']
+Limits für bad/medium/good/super: [3, 8, 24]
+Durchschnittliche Silhouette Score: 0.9995999812412142
+Durchschnittliche Punktzahl der super Songs: 3.27037037037037 27 Songs
+Durchschnittliche Punktzahl der good Songs: 2.5703947368421054 152 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.212320916905444 349 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.191902119071645 991 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [3, 8, 24]
+Durchschnittliche Silhouette Score: 0.9995299814165929
+Durchschnittliche Punktzahl der super Songs: 2.5381944444444446 36 Songs
+Durchschnittliche Punktzahl der good Songs: 2.321208530805687 211 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.6065856777493606 391 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.329066985645933 1045 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [3, 8, 24]
+Durchschnittliche Silhouette Score: 0.9993899814408392
+Durchschnittliche Punktzahl der super Songs: 1.9357638888888886 48 Songs
+Durchschnittliche Punktzahl der good Songs: 2.459786821705426 172 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.122477744807122 337 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.1673943381180223 836 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: []
+Limits für bad/medium/good/super: [3, 9, 24]
+Durchschnittliche Silhouette Score: 0.9995199813379374
+Durchschnittliche Punktzahl der super Songs: 2.8125 16 Songs
+Durchschnittliche Punktzahl der good Songs: 1.4308943089430894 123 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.4952380952380953 315 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.6391752577319587 1164 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness']
+Limits für bad/medium/good/super: [3, 9, 24]
+Durchschnittliche Silhouette Score: 0.9995799814876551
+Durchschnittliche Punktzahl der super Songs: 2.223404255319149 47 Songs
+Durchschnittliche Punktzahl der good Songs: 1.3893072289156627 166 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.7155172413793103 406 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.9353899883585564 859 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss']
+Limits für bad/medium/good/super: [3, 9, 24]
+Durchschnittliche Silhouette Score: 0.9995299813330076
+Durchschnittliche Punktzahl der super Songs: 2.0197368421052633 38 Songs
+Durchschnittliche Punktzahl der good Songs: 2.33030303030303 165 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.8333333333333333 489 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.9655144167758847 1526 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['tempo']
+Limits für bad/medium/good/super: [3, 9, 24]
+Durchschnittliche Silhouette Score: 0.9995899816729523
+Durchschnittliche Punktzahl der super Songs: 2.4663461538461537 52 Songs
+Durchschnittliche Punktzahl der good Songs: 2.5958994708994707 189 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.0210084033613445 476 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.4622713414634148 984 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss']
+Limits für bad/medium/good/super: [3, 9, 24]
+Durchschnittliche Silhouette Score: 0.9995299816680581
+Durchschnittliche Punktzahl der super Songs: 2.6077380952380955 42 Songs
+Durchschnittliche Punktzahl der good Songs: 2.063028169014085 142 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.0590529247910863 359 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.8460915492957746 710 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'tempo']
+Limits für bad/medium/good/super: [3, 9, 24]
+Durchschnittliche Silhouette Score: 0.9996499812785155
+Durchschnittliche Punktzahl der super Songs: 4.131896551724138 29 Songs
+Durchschnittliche Punktzahl der good Songs: 2.6575581395348835 215 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.999877750611247 409 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.8389145012573342 1193 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [3, 9, 24]
+Durchschnittliche Silhouette Score: 0.9995199815130673
+Durchschnittliche Punktzahl der super Songs: 2.455 30 Songs
+Durchschnittliche Punktzahl der good Songs: 2.686771300448431 223 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.1974447513812154 362 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.9891975308641976 891 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [3, 9, 24]
+Durchschnittliche Silhouette Score: 0.9996199815755495
+Durchschnittliche Punktzahl der super Songs: 2.273706896551724 58 Songs
+Durchschnittliche Punktzahl der good Songs: 2.7835195530726256 179 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.208872549019608 340 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.3435908691834944 1139 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: []
+Limits für bad/medium/good/super: [5, 11, 16]
+Durchschnittliche Silhouette Score: 0.9996599818306129
+Durchschnittliche Punktzahl der super Songs: 2.898550724637681 69 Songs
+Durchschnittliche Punktzahl der good Songs: 1.7777777777777777 63 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.6278026905829597 223 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.0560538116591927 1338 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness']
+Limits für bad/medium/good/super: [5, 11, 16]
+Durchschnittliche Silhouette Score: 0.9994999817266794
+Durchschnittliche Punktzahl der super Songs: 2.525735294117647 68 Songs
+Durchschnittliche Punktzahl der good Songs: 3.3025568181818183 88 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.3267045454545454 220 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.9400440044004401 909 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss']
+Limits für bad/medium/good/super: [5, 11, 16]
+Durchschnittliche Silhouette Score: 0.9995099816699671
+Durchschnittliche Punktzahl der super Songs: 3.1519607843137254 51 Songs
+Durchschnittliche Punktzahl der good Songs: 2.388157894736842 76 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.9909169550173011 289 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.7710597826086956 1288 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['tempo']
+Limits für bad/medium/good/super: [5, 11, 16]
+Durchschnittliche Silhouette Score: 0.9995599815894929
+Durchschnittliche Punktzahl der super Songs: 2.763888888888889 63 Songs
+Durchschnittliche Punktzahl der good Songs: 2.4069444444444446 90 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.266304347826087 276 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.000122428991185 1021 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss']
+Limits für bad/medium/good/super: [5, 11, 16]
+Durchschnittliche Silhouette Score: 0.9995099813476968
+Durchschnittliche Punktzahl der super Songs: 3.133695652173913 46 Songs
+Durchschnittliche Punktzahl der good Songs: 2.612837837837838 74 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.5231770833333336 192 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.1516823687752353 743 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'tempo']
+Limits für bad/medium/good/super: [5, 11, 16]
+Durchschnittliche Silhouette Score: 0.999579981379614
+Durchschnittliche Punktzahl der super Songs: 2.4476190476190474 21 Songs
+Durchschnittliche Punktzahl der good Songs: 2.6642857142857146 49 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.183801498127341 267 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.0177674672489085 916 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [5, 11, 16]
+Durchschnittliche Silhouette Score: 0.9994999811684806
+Durchschnittliche Punktzahl der super Songs: 1.773684210526316 38 Songs
+Durchschnittliche Punktzahl der good Songs: 2.3813333333333335 75 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.2914959016393444 244 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.017609315589353 1052 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [5, 11, 16]
+Durchschnittliche Silhouette Score: 0.9995799814348649
+Durchschnittliche Punktzahl der super Songs: 1.9078431372549018 51 Songs
+Durchschnittliche Punktzahl der good Songs: 1.9331300813008128 82 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.5763333333333334 275 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.8167434008594228 1086 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: []
+Limits für bad/medium/good/super: [5, 10, 24]
+Durchschnittliche Silhouette Score: 0.9995499814807444
+Durchschnittliche Punktzahl der super Songs: 1.3333333333333333 39 Songs
+Durchschnittliche Punktzahl der good Songs: 1.981818181818182 110 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.9787234042553192 282 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.562825278810409 1345 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness']
+Limits für bad/medium/good/super: [5, 10, 24]
+Durchschnittliche Silhouette Score: 0.9994099815845331
+Durchschnittliche Punktzahl der super Songs: 2.3958333333333335 66 Songs
+Durchschnittliche Punktzahl der good Songs: 2.098684210526316 171 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.8743074792243768 361 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.8127721335268505 1378 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss']
+Limits für bad/medium/good/super: [5, 10, 24]
+Durchschnittliche Silhouette Score: 0.9995399814519044
+Durchschnittliche Punktzahl der super Songs: 2.981707317073171 41 Songs
+Durchschnittliche Punktzahl der good Songs: 1.8422619047619047 126 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.050675675675676 185 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.875 1108 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['tempo']
+Limits für bad/medium/good/super: [5, 10, 24]
+Durchschnittliche Silhouette Score: 0.999539981407288
+Durchschnittliche Punktzahl der super Songs: 2.1666666666666665 18 Songs
+Durchschnittliche Punktzahl der good Songs: 2.0963740458015265 131 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.112278761061947 226 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.8065772034459908 1509 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss']
+Limits für bad/medium/good/super: [5, 10, 24]
+Durchschnittliche Silhouette Score: 0.9994999814727141
+Durchschnittliche Punktzahl der super Songs: 1.2958333333333334 24 Songs
+Durchschnittliche Punktzahl der good Songs: 2.3591503267973857 153 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.4568807339449537 218 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.284796238244514 1276 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'tempo']
+Limits für bad/medium/good/super: [5, 10, 24]
+Durchschnittliche Silhouette Score: 0.9996099812600147
+Durchschnittliche Punktzahl der super Songs: 2.900833333333333 30 Songs
+Durchschnittliche Punktzahl der good Songs: 1.9510416666666666 120 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.5685714285714285 175 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.9280125195618154 639 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [5, 10, 24]
+Durchschnittliche Silhouette Score: 0.9995099815222902
+Durchschnittliche Punktzahl der super Songs: 2.491 50 Songs
+Durchschnittliche Punktzahl der good Songs: 2.15 174 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.268324250681199 367 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.170950704225352 1278 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [5, 10, 24]
+Durchschnittliche Silhouette Score: 0.9995599816660435
+Durchschnittliche Punktzahl der super Songs: 1.536788617886179 41 Songs
+Durchschnittliche Punktzahl der good Songs: 2.071407185628743 167 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.5709341397849461 248 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.5863158673771462 1126 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: []
+Limits für bad/medium/good/super: [6, 10, 15]
+Durchschnittliche Silhouette Score: 0.9995999814989311
+Durchschnittliche Punktzahl der super Songs: 1.3703703703703705 27 Songs
+Durchschnittliche Punktzahl der good Songs: 1.7294117647058824 85 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.900709219858156 141 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.840966921119593 786 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness']
+Limits für bad/medium/good/super: [6, 10, 15]
+Durchschnittliche Silhouette Score: 0.9995599814520931
+Durchschnittliche Punktzahl der super Songs: 2.7110655737704916 61 Songs
+Durchschnittliche Punktzahl der good Songs: 2.1860795454545454 88 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.534090909090909 165 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.457702498107494 1321 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss']
+Limits für bad/medium/good/super: [6, 10, 15]
+Durchschnittliche Silhouette Score: 0.9995699814443977
+Durchschnittliche Punktzahl der super Songs: 2.4470338983050848 59 Songs
+Durchschnittliche Punktzahl der good Songs: 1.7561274509803921 102 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.4040697674418605 172 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.6510754272245138 1697 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['tempo']
+Limits für bad/medium/good/super: [6, 10, 15]
+Durchschnittliche Silhouette Score: 0.9995299815176052
+Durchschnittliche Punktzahl der super Songs: 1.575 50 Songs
+Durchschnittliche Punktzahl der good Songs: 2.432098765432099 81 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.172169811320755 159 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.1397875816993466 1530 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss']
+Limits für bad/medium/good/super: [6, 10, 15]
+Durchschnittliche Silhouette Score: 0.9995499817133056
+Durchschnittliche Punktzahl der super Songs: 2.6669642857142857 28 Songs
+Durchschnittliche Punktzahl der good Songs: 2.6810606060606057 66 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.2225806451612904 93 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.0973456325301205 1328 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'tempo']
+Limits für bad/medium/good/super: [6, 10, 15]
+Durchschnittliche Silhouette Score: 0.9996299814917137
+Durchschnittliche Punktzahl der super Songs: 3.818636363636364 55 Songs
+Durchschnittliche Punktzahl der good Songs: 2.3924157303370785 89 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.488934426229508 122 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.345188848920863 1668 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [6, 10, 15]
+Durchschnittliche Silhouette Score: 0.9995599815463242
+Durchschnittliche Punktzahl der super Songs: 2.537704918032787 61 Songs
+Durchschnittliche Punktzahl der good Songs: 1.997191011235955 89 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.1562937062937064 143 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.486884735202492 1605 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [6, 10, 15]
+Durchschnittliche Silhouette Score: 0.999429981436684
+Durchschnittliche Punktzahl der super Songs: 1.9397916666666668 40 Songs
+Durchschnittliche Punktzahl der good Songs: 2.715555555555556 75 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.104330065359477 102 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.8372217858078026 1273 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: []
+Limits für bad/medium/good/super: [5, 8, 13]
+Durchschnittliche Silhouette Score: 0.9995199815262061
+Durchschnittliche Punktzahl der super Songs: 2.389830508474576 59 Songs
+Durchschnittliche Punktzahl der good Songs: 1.7926829268292683 82 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.8794326241134751 141 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.8389012620638456 1347 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness']
+Limits für bad/medium/good/super: [5, 8, 13]
+Durchschnittliche Silhouette Score: 0.9994699815845127
+Durchschnittliche Punktzahl der super Songs: 2.117857142857143 35 Songs
+Durchschnittliche Punktzahl der good Songs: 2.8843457943925235 107 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.4943181818181817 198 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.224773834377175 1437 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss']
+Limits für bad/medium/good/super: [5, 8, 13]
+Durchschnittliche Silhouette Score: 0.9995799816847588
+Durchschnittliche Punktzahl der super Songs: 2.875 80 Songs
+Durchschnittliche Punktzahl der good Songs: 2.449766355140187 107 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.1540055248618786 181 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.1144323671497585 1656 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['tempo']
+Limits für bad/medium/good/super: [5, 8, 13]
+Durchschnittliche Silhouette Score: 0.999599981525743
+Durchschnittliche Punktzahl der super Songs: 2.271484375 64 Songs
+Durchschnittliche Punktzahl der good Songs: 2.078125 136 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.9361263736263736 182 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.0029469548133596 1018 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss']
+Limits für bad/medium/good/super: [5, 8, 13]
+Durchschnittliche Silhouette Score: 0.9995499814361775
+Durchschnittliche Punktzahl der super Songs: 1.919375 40 Songs
+Durchschnittliche Punktzahl der good Songs: 2.5550403225806453 124 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.263647959183674 196 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.9353230890464934 1269 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'tempo']
+Limits für bad/medium/good/super: [5, 8, 13]
+Durchschnittliche Silhouette Score: 0.9994499815994962
+Durchschnittliche Punktzahl der super Songs: 1.8381944444444445 36 Songs
+Durchschnittliche Punktzahl der good Songs: 2.154333333333333 75 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.03125 120 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.9996294466403162 1012 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [5, 8, 13]
+Durchschnittliche Silhouette Score: 0.9996599815157904
+Durchschnittliche Punktzahl der super Songs: 2.5625 64 Songs
+Durchschnittliche Punktzahl der good Songs: 2.5172131147540986 122 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.4643364928909954 211 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.0386102236421726 1565 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [5, 8, 13]
+Durchschnittliche Silhouette Score: 0.9996299813153527
+Durchschnittliche Punktzahl der super Songs: 2.212403100775193 43 Songs
+Durchschnittliche Punktzahl der good Songs: 2.232539682539682 84 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.045436507936508 126 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.3276852685268525 1111 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: []
+Limits für bad/medium/good/super: [6, 9, 23]
+Durchschnittliche Silhouette Score: 0.9996399814342867
+Durchschnittliche Punktzahl der super Songs: 1.7916666666666667 24 Songs
+Durchschnittliche Punktzahl der good Songs: 1.9375 144 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.710144927536232 138 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.4647887323943662 1207 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness']
+Limits für bad/medium/good/super: [6, 9, 23]
+Durchschnittliche Silhouette Score: 0.9995599814899023
+Durchschnittliche Punktzahl der super Songs: 2.4154411764705883 34 Songs
+Durchschnittliche Punktzahl der good Songs: 1.7938034188034189 117 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.5984589041095891 146 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.6674856674856675 1221 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss']
+Limits für bad/medium/good/super: [6, 9, 23]
+Durchschnittliche Silhouette Score: 0.9995899815041648
+Durchschnittliche Punktzahl der super Songs: 1.4107142857142858 28 Songs
+Durchschnittliche Punktzahl der good Songs: 2.182791095890411 292 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.7996575342465753 146 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.6991836734693877 1225 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['tempo']
+Limits für bad/medium/good/super: [6, 9, 23]
+Durchschnittliche Silhouette Score: 0.9995499813272188
+Durchschnittliche Punktzahl der super Songs: 2.284090909090909 66 Songs
+Durchschnittliche Punktzahl der good Songs: 1.7468434343434343 198 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.6153169014084507 142 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.9969084913437758 1213 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss']
+Limits für bad/medium/good/super: [6, 9, 23]
+Durchschnittliche Silhouette Score: 0.9995399817326769
+Durchschnittliche Punktzahl der super Songs: 2.4091666666666662 60 Songs
+Durchschnittliche Punktzahl der good Songs: 1.7538819875776397 161 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.9424528301886792 106 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.7343841107871718 1372 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'tempo']
+Limits für bad/medium/good/super: [6, 9, 23]
+Durchschnittliche Silhouette Score: 0.9995999814829741
+Durchschnittliche Punktzahl der super Songs: 1.3010416666666667 24 Songs
+Durchschnittliche Punktzahl der good Songs: 2.059171597633136 169 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.3189024390243906 123 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.7485383944153579 1146 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [6, 9, 23]
+Durchschnittliche Silhouette Score: 0.9995799813848258
+Durchschnittliche Punktzahl der super Songs: 2.2772727272727273 33 Songs
+Durchschnittliche Punktzahl der good Songs: 2.264457831325301 166 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.8219642857142855 140 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.7863581730769231 1664 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [6, 9, 23]
+Durchschnittliche Silhouette Score: 0.9994699814747889
+Durchschnittliche Punktzahl der super Songs: 2.461284722222222 48 Songs
+Durchschnittliche Punktzahl der good Songs: 1.952445652173913 184 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.5542948717948715 130 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.6955870151420867 1607 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: []
+Limits für bad/medium/good/super: [2, 14, 24]
+Durchschnittliche Silhouette Score: 0.9995199813976908
+Durchschnittliche Punktzahl der super Songs: 3.696969696969697 33 Songs
+Durchschnittliche Punktzahl der good Songs: 2.3333333333333335 93 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.5942857142857143 525 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.86002886002886 693 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness']
+Limits für bad/medium/good/super: [2, 14, 24]
+Durchschnittliche Silhouette Score: 0.9995399816431136
+Durchschnittliche Punktzahl der super Songs: 2.6018518518518516 54 Songs
+Durchschnittliche Punktzahl der good Songs: 1.875 94 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.5623065015479876 646 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.5410265363128492 716 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss']
+Limits für bad/medium/good/super: [2, 14, 24]
+Durchschnittliche Silhouette Score: 0.9995499816325178
+Durchschnittliche Punktzahl der super Songs: 2.1341463414634148 41 Songs
+Durchschnittliche Punktzahl der good Songs: 2.897727272727273 99 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.1626461988304095 684 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.2907873376623376 616 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['tempo']
+Limits für bad/medium/good/super: [2, 14, 24]
+Durchschnittliche Silhouette Score: 0.9995899815798317
+Durchschnittliche Punktzahl der super Songs: 2.4214285714285713 35 Songs
+Durchschnittliche Punktzahl der good Songs: 2.461764705882353 85 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.095925925925926 675 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.0185975609756097 820 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss']
+Limits für bad/medium/good/super: [2, 14, 24]
+Durchschnittliche Silhouette Score: 0.9994799816171754
+Durchschnittliche Punktzahl der super Songs: 2.4090000000000003 25 Songs
+Durchschnittliche Punktzahl der good Songs: 2.555952380952381 63 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.1055515239477502 689 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.8288655462184873 595 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'tempo']
+Limits für bad/medium/good/super: [2, 14, 24]
+Durchschnittliche Silhouette Score: 0.9996199813118546
+Durchschnittliche Punktzahl der super Songs: 1.7904545454545453 55 Songs
+Durchschnittliche Punktzahl der good Songs: 2.098670212765957 94 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.9331632653061224 784 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.8068918918918917 740 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [2, 14, 24]
+Durchschnittliche Silhouette Score: 0.999459981527268
+Durchschnittliche Punktzahl der super Songs: 2.1225961538461537 52 Songs
+Durchschnittliche Punktzahl der good Songs: 2.6325 100 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.004898862199747 791 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.467522711390636 1431 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [2, 14, 24]
+Durchschnittliche Silhouette Score: 0.9995499816382593
+Durchschnittliche Punktzahl der super Songs: 3.335 60 Songs
+Durchschnittliche Punktzahl der good Songs: 1.4321808510638294 94 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.4384117246080432 489 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.236629245826137 579 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: []
+Limits für bad/medium/good/super: [2, 14, 19]
+Durchschnittliche Silhouette Score: 0.9995199814124149
+Durchschnittliche Punktzahl der super Songs: 2.3773584905660377 53 Songs
+Durchschnittliche Punktzahl der good Songs: 2.6956521739130435 92 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.7163636363636363 825 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.47375 800 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness']
+Limits für bad/medium/good/super: [2, 14, 19]
+Durchschnittliche Silhouette Score: 0.9995499817782239
+Durchschnittliche Punktzahl der super Songs: 3.3041666666666667 30 Songs
+Durchschnittliche Punktzahl der good Songs: 1.9912790697674418 43 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.4084615384615384 650 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.2078195067264574 892 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss']
+Limits für bad/medium/good/super: [2, 14, 19]
+Durchschnittliche Silhouette Score: 0.9996099814918524
+Durchschnittliche Punktzahl der super Songs: 2.55 60 Songs
+Durchschnittliche Punktzahl der good Songs: 2.5782967032967035 91 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.006607142857143 700 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.9136194029850746 670 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['tempo']
+Limits für bad/medium/good/super: [2, 14, 19]
+Durchschnittliche Silhouette Score: 0.9994699814049813
+Durchschnittliche Punktzahl der super Songs: 1.7878787878787878 33 Songs
+Durchschnittliche Punktzahl der good Songs: 2.705808080808081 99 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.9512048192771085 830 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.002700127064803 787 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss']
+Limits für bad/medium/good/super: [2, 14, 19]
+Durchschnittliche Silhouette Score: 0.9995199814300108
+Durchschnittliche Punktzahl der super Songs: 2.1302083333333335 48 Songs
+Durchschnittliche Punktzahl der good Songs: 2.2086805555555555 72 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.879231625835189 898 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.921676891615542 978 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'tempo']
+Limits für bad/medium/good/super: [2, 14, 19]
+Durchschnittliche Silhouette Score: 0.9994699814513333
+Durchschnittliche Punktzahl der super Songs: 2.6949074074074075 54 Songs
+Durchschnittliche Punktzahl der good Songs: 2.6221311475409834 61 Songs
+Durchschnittliche Punktzahl der medium Songs: 2.091702819956616 922 Songs
+Durchschnittliche Punktzahl der bad Songs: 1.921382978723404 705 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [2, 14, 19]
+Durchschnittliche Silhouette Score: 0.9994199815188102
+Durchschnittliche Punktzahl der super Songs: 2.5430232558139534 43 Songs
+Durchschnittliche Punktzahl der good Songs: 1.343888888888889 45 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.9526603001364256 733 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.152601456815817 961 Songs
+
+k-means++ mit k = 200
+Cluster-Parameter: ['timeSig', 'songkey', 'mode']
+Andere Parameter: ['loudness', 'hotttnesss', 'tempo']
+Limits für bad/medium/good/super: [2, 14, 19]
+Durchschnittliche Silhouette Score: 0.9995899816753703
+Durchschnittliche Punktzahl der super Songs: 2.8151315789473683 38 Songs
+Durchschnittliche Punktzahl der good Songs: 2.0284313725490195 51 Songs
+Durchschnittliche Punktzahl der medium Songs: 1.797122838401908 1118 Songs
+Durchschnittliche Punktzahl der bad Songs: 2.111784009546539 838 Songs
