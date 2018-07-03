@@ -9,8 +9,7 @@ import operator
 from numpy import linalg as LA
 
 
-def recommend(entered_ids, amount):
-    song_dict = read_song_dict_w_labels()
+def recommend(song_dict, entered_ids, amount):
     clusters = build_song_clusters(song_dict, 200)
     for songid in entered_ids:
         ids_to_give_points = [
