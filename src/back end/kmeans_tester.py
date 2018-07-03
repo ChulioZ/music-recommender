@@ -7,21 +7,10 @@ from sklearn import metrics
 import itertools
 from os.path import dirname, abspath
 import json
+from song_dict_reader import read_song_dict_wo_labels, build_song_dict
 
 
 file_path = dirname(dirname(dirname(abspath(__file__))))
-
-
-def read_song_dict_wo_labels():
-    with open(file_path + '/msd_data.txt', 'r') as f:
-        song_dict = json.load(f)
-    return build_song_dict(song_dict)
-
-
-def read_song_dict_w_labels():
-    with open(file_path + '/msd_data_labeled.txt', 'r') as f:
-        song_dict = json.load(f)
-    return build_song_dict(song_dict)
 
 
 def add_kmeans_labels():
@@ -29,13 +18,12 @@ def add_kmeans_labels():
     ids = []
     cluster_parameters = []
     cp = ['timeSig', 'songkey', 'mode']
-    ncp = []
     for key in song_dict:
         ids.append(key)
         cluster_parameters.append([song_dict[key][par] for par in cp])
     labels, centroids = do_kmeans(cluster_parameters, 200)
     for i in range(0, len(ids)):
-        song_dict[ids[i]]['label'] = labels[i]
+        song_dict[ids[i]]['label'] = np.asscalar(labels[i])
     with open(file_path + '/msd_data_labeled.txt', 'w') as outfile:
         json.dump(song_dict, outfile)
 
@@ -105,17 +93,6 @@ def test_kmeans(listened_songs, limits):
                     str(np.mean(point_array_medium)), str(len(point_array_medium)) + ' Songs')
                 print('Durchschnittliche Punktzahl der bad Songs: ' +
                     str(np.mean(point_array_bad)), str(len(point_array_bad)) + ' Songs')
-
-
-def build_song_dict(song_dict):
-    ret_dict = {}
-    for key in song_dict:
-        song_id = song_dict[key]['id']
-        ret_dict[song_id] = {}
-        for par in song_dict[key]:
-            ret_dict[song_id][par] = song_dict[key][par]
-        ret_dict[song_id]['points'] = 0
-    return ret_dict
 
 
 def get_listening_ids(listened_songs):
