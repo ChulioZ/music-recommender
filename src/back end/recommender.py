@@ -4,10 +4,14 @@ from clustering import do_kmeans
 import math
 import numpy as np
 from functools import reduce
+from kmeans_tester import read_song_dict_w_labels
 
 
-def recommend(entered_ids, cp, ncp, song_dict, centroids):
-    clusters = build_song_clusters(song_dict, len(centroids))
+def recommend(entered_ids):
+    song_dict = read_song_dict_w_labels()
+    clusters = build_song_clusters(song_dict, 200)
+    cp = ['timeSig', 'songkey', 'mode']
+    ncp = []
     for songid in entered_ids:
         song_dict = distribute_points(
             clusters[song_dict[songid]['label']], song_dict, songid, 8, 10, cp, ncp)

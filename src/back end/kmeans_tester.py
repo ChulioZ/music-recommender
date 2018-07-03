@@ -9,13 +9,41 @@ from os.path import dirname, abspath
 import json
 
 
+file_path = dirname(dirname(dirname(abspath(__file__))))
+
+
+def read_song_dict_wo_labels():
+    with open(file_path + '/msd_data.txt', 'r') as f:
+        song_dict = json.load(f)
+    return build_song_dict(song_dict)
+
+
+def read_song_dict_w_labels():
+    with open(file_path + '/msd_data_labeled.txt', 'r') as f:
+        song_dict = json.load(f)
+    return build_song_dict(song_dict)
+
+
+def add_kmeans_labels():
+    song_dict = read_song_dict_wo_labels()
+    ids = []
+    cluster_parameters = []
+    cp = ['timeSig', 'songkey', 'mode']
+    ncp = []
+    for key in song_dict:
+        ids.append(key)
+        cluster_parameters.append([song_dict[key][par] for par in cp])
+    labels, centroids = do_kmeans(cluster_parameters, 200)
+    for i in range(0, len(ids)):
+        song_dict[ids[i]]['label'] = labels[i]
+    with open(file_path + '/msd_data_labeled.txt', 'w') as outfile:
+        json.dump(song_dict, outfile)
+
+
 def test_kmeans(listened_songs, limits):
     entered_ids, test_ids_bad, test_ids_medium, test_ids_good, test_ids_super = get_listening_ids(
         listened_songs)
-    file_path = dirname(dirname(dirname(abspath(__file__))))
-    with open(file_path + '/msd_data.txt', 'r') as f:
-        song_dict = json.load(f)
-    song_dict = build_song_dict(song_dict)
+    song_dict = read_song_dict_wo_labels()
     parameters = ['loudness', 'hotttnesss',
                   'tempo', 'timeSig', 'songkey', 'mode']
     '''par_combinations = []
