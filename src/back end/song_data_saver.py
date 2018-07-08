@@ -8,7 +8,7 @@ import numpy as np
 
 import hdf5_getters as GETTERS
 from constants import (FILE_PATH, INITIAL_OUTPUT_FILE_PATH, METHODS,
-                       MSD_DATA_PATH)
+                       MSD_DATA_PATH, PARS)
 from mice import MICE
 
 
@@ -23,7 +23,6 @@ def save_songs():
     song_dict = {}
     i = -1
     ids = set()
-    pars = ['loudness', 'hotttnesss', 'tempo', 'timeSig', 'songkey', 'mode']
     for root, dirs, files in os.walk(MSD_DATA_PATH):
         files = glob.glob(os.path.join(root, '*'+'.h5'))
         for file in files:
@@ -43,7 +42,7 @@ def save_songs():
 
                 # save the remaining parameters or, whenever a value is
                 # missing, save np.NaN instead
-                for key, method in zip(pars, METHODS):
+                for key, method in zip(PARS, METHODS):
                     value = getattr(GETTERS, method)(h5)
                     if math.isnan(value):
                         song_dict[i][key] = np.NaN
@@ -56,7 +55,7 @@ def save_songs():
     print('Building the array for MICE ...')
     song_array = []
     for index in range(0, len(song_dict)):
-        song_array.append([song_dict[index][par] for par in pars])
+        song_array.append([song_dict[index][par] for par in PARS])
 
     print('MICE ...')
     mc = MICE()
@@ -66,18 +65,18 @@ def save_songs():
     # store the values for each parameter in a list for the normalization
     # in the next step
     val_lists = []
-    for par in pars:
+    for par in PARS:
         val_lists.append([])
 
     for index in range(0, len(song_dict)):
-        for par, val_list, nr in zip(pars, val_lists, range(0, len(pars))):
+        for par, val_list, nr in zip(PARS, val_lists, range(0, len(PARS))):
             value = a[index, nr]
             song_dict[index][par] = value
             val_list.append(value)
 
     # normalize the values
     print('Normalizing the values ...')
-    for par, val_list in zip(pars, val_lists):
+    for par, val_list in zip(PARS, val_lists):
         max_value = -float("inf")
         min_value = float("inf")
         for index in song_dict:
@@ -85,7 +84,8 @@ def save_songs():
             min_value = min(min_value, song_dict[index][par])
         for index in song_dict:
             song_dict[index][par] = (
-                song_dict[index][par] - np.mean(val_list)) / (max_value - min_value) * 100
+                song_dict[index][par] - np.mean(val_list)) / \
+                (max_value - min_value) * 100
 
     # save the data as a JSON file
     print('Saving JSON ...')
