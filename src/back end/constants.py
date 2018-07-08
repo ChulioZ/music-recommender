@@ -27,11 +27,13 @@ WELCOMESTRING = '<font size="30">Welcome to the Music Recommender System!</font>
     <strong>recamount</strong>: The amount of songs you want the system to recommend. Default is 10.<br/> \
     <strong>ent</strong>: The songs you want to enter into the Music Recommender System. You can specify as many as you like.<br/> \
     Start with ent1=(first song id), then ent2=(second song id) and so on.<br/> \
+    Note that if you want to do a Random Forest recommendation, you have to enter at least one song that is eligible for a Random Forest recommendation.<br/> \
+    To find out which songs are, do a song search as described below.<br/> \
     If you don\'t enter any songs, the system will randomly choose songs itself.<br/> \
     <strong>entamount</strong>: The amount of songs you want the system to randomly choose as entered songs.<br/> \
     Only relevant of course as long as you don\'t enter songs yourself.<br/><br/> \
     Example for a working MRS start:<br/><br/> \
-    http://127.0.0.1:5000/mrs?rf=True&recamount=20&ent1=SOBLFFE12AF72AA5BA<br/><br/> \
+    <strong>http://127.0.0.1:5000/mrs?rf=True&recamount=20&ent1=SOBLFFE12AF72AA5BA</strong><br/><br/> \
     Depending on your PC, getting a recommendation might take a while, so please be patient.<br/><br/><br/><br/> \
     You can also visit <strong>http://127.0.0.1:5000/songs</strong> to get a list of all songs that meet specific seach criteria. There, the parameters to specify are:<br/><br/> \
     <strong>artist</strong>: artist of the song<br/> \
@@ -39,5 +41,5 @@ WELCOMESTRING = '<font size="30">Welcome to the Music Recommender System!</font>
     <strong>id</strong>: id of the song<br/> \
     <strong>elig</strong>: Random Forest eligibility of the song; elig=True if you want songs that are eligible for Random Forest recommendations, False otherwise.<br/><br/> \
     Example for a working song search:<br/><br/> \
-    http://127.0.0.1:5000/songs?artist=Arctic Monkeys&elig=True<br/><br/> \
+    <strong>http://127.0.0.1:5000/songs?artist=Arctic Monkeys&elig=True</strong><br/><br/> \
     Have fun using the system and listening to the recommended songs!'
