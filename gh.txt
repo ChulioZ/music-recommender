@@ -1,3 +1,0 @@
-recommender: loudness, tempo als ncp
-avg_cluster_distance als distance zwischen song und cluster-zentrum
-random forest ausprobieren
