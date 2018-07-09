@@ -1,0 +1,9 @@
+numpy
+six
+tables
+h5py
+numexpr
+Cython
+blosc
+scikit-learn
+flask
