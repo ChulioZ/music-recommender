@@ -7,7 +7,7 @@ from numpy import linalg as LA
 from sklearn.ensemble import RandomForestClassifier
 
 from centroid_distance_getter import get_centroid_distances
-from constants import CHOSEN_PARS_CLUSTER, CHOSEN_PARS_RF
+from constants import CHOSEN_PARS_CLUSTER, CHOSEN_PARS_RF, LIMIT_LIST
 from listening_count_reader import get_listened_songs
 
 
@@ -66,7 +66,7 @@ def recommend_w_rf(song_dict, entered_ids, amount):
     rf_ids = []  # tracks the songs that are already included
     rf_targets_quant = []  # tracks how often each song is already included
     # all users and the songs they've listened to
-    listened_songs = get_listened_songs(limits=[8, 13])[0]
+    listened_songs = get_listened_songs(limits=LIMIT_LIST)[0]
     for user in listened_songs.keys():
         # only users are taken into account to build the random forest that
         # have at least one of the entered songs in their 'good' category
@@ -190,7 +190,7 @@ def print_recommendation(song_dict, entered_ids, amount):
         ret_string += s + '<br/>'
         # remove the song from the dictionary
         point_dict.pop(best_song)
-    return ret_string
+    return ret_string, point_dict
 
 
 def build_point_dict(song_dict):

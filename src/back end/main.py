@@ -55,11 +55,11 @@ def make_recommendation(random_forest=False,
     if random_forest:
         if entered_songs is None:
             entered_songs = get_rnd_good_songs(song_dict, entered_amount)
-        return recommend_w_rf(song_dict, entered_songs, rec_amount)
+        return recommend_w_rf(song_dict, entered_songs, rec_amount)[0]
     else:
         if entered_songs is None:
             entered_songs = get_rnd_entered_songs(song_dict, entered_amount)
-        return recommend(song_dict, entered_songs, rec_amount)
+        return recommend(song_dict, entered_songs, rec_amount)[0]
 
 
 @app.route('/songs', methods=['GET'])

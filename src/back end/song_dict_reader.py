@@ -1,7 +1,9 @@
 import json
 import random
+from itertools import islice
 
-from constants import MSD_DATA_FILE_PATH, MSD_DATA_LABELED_PART_FILE_PATH, PARS
+from constants import (LIMIT_LIST, MSD_DATA_FILE_PATH,
+                       MSD_DATA_LABELED_PART_FILE_PATH, PARS)
 from listening_count_reader import get_listened_songs
 
 
@@ -79,7 +81,7 @@ def get_rnd_entered_songs(song_dict, amount):
     return random.sample(song_dict.keys(), amount)
 
 
-def get_rnd_good_songs(song_dict, amount, limits=[9, 24]):
+def get_rnd_good_songs(song_dict, amount, limits=LIMIT_LIST):
     '''
     Get an amount of random song ids that at least one user has in his
     good category.
@@ -98,3 +100,25 @@ def get_rnd_good_songs(song_dict, amount, limits=[9, 24]):
     for song_id in song_ids_2_pop:
         song_dict_temp.pop(song_id)
     return random.sample(song_dict_temp.keys(), amount)
+
+
+def changerfe():
+    listened_songs = get_listened_songs(limits=LIMIT_LIST)[0]
+    song_dict = read_song_dict_w_labels()
+    rf_songs = []
+    for user in listened_songs:
+        for song in listened_songs[user]['good']:
+            rf_songs.append(song)
+    for song in song_dict:
+        song_dict[song]['rf_enterable'] = song in rf_songs
+    i = 1
+    for item in chunks(song_dict):
+        with open(MSD_DATA_LABELED_PART_FILE_PATH.format(i), 'w') as f:
+            json.dump(item, f)
+            i += 1
+            f.close()
+
+def chunks(data):
+    it = iter(data)
+    for i in range(0, len(data), 150000):
+        yield {k:data[k] for k in islice(it, 150000)}

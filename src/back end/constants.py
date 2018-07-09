@@ -45,3 +45,5 @@ WELCOMESTRING = '<font size="30">Welcome to the Music Recommender System!</font>
     Example for a working song search:<br/><br/> \
     <strong>http://127.0.0.1:5000/songs?artist=Arctic Monkeys&elig=True</strong><br/><br/> \
     Have fun using the system and listening to the recommended songs!'
+
+LIMIT_LIST = [8, 13]
