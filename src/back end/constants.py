@@ -18,6 +18,7 @@ MSD_DATA_LABELED_PART_FILE_PATH = FILE_PATH + '/msd_data_labeled{}.txt'
 USER_SONG_LISTEN_NUMBERS_FILE_PATH = FILE_PATH + \
     '/user_song_listen_numbers.txt'
 SONG_LIST_FILE_PATH = FILE_PATH + '/song_list.txt'
+RF_TEST_FILE_PATH = FILE_PATH + '/rf_test_results.txt'
 
 WELCOMESTRING = '<font size="30">Welcome to the Music Recommender System!</font><br/><br/><br/> \
     To have the system make a recommendation for you, please visit <strong>http://127.0.0.1:5000/mrs</strong>.<br/> \
