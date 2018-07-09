@@ -64,15 +64,14 @@ def test_kmeans(limits):
     entered_ids, test_ids_bad, test_ids_medium, test_ids_good = \
         get_random_test_listeners(limits)
     song_dict = read_song_dict_wo_labels()
-    parameters = PARS
     par_combinations = []
-    for i in range(3, len(parameters) + 1):
-        listing = [list(x) for x in itertools.combinations(parameters, i)]
+    for i in range(3, len(PARS) + 1):
+        listing = [list(x) for x in itertools.combinations(PARS, i)]
         par_combinations.extend(listing)
     # all combinations of cluster parameters
     for par_combination in par_combinations:
         ncp_total = [
-            item for item in parameters if item not in par_combination]
+            item for item in PARS if item not in par_combination]
         ncp_combinations = []
         for i in range(0, len(ncp_total) + 1):
             listing = [list(x) for x in itertools.combinations(ncp_total, i)]
