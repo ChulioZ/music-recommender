@@ -796,8 +796,33 @@ Limits: [7, 30]   Songs entered: 4   Par-combination: [loudness, hotttnesss, tim
 Limits: [7, 30]   Songs entered: 4   Par-combination: [loudness, tempo, timeSig, songkey, mode]   Average score: 0.7564102564102564
 Limits: [7, 30]   Songs entered: 4   Par-combination: [hotttnesss, tempo, timeSig, songkey, mode]   Average score: 0.717948717948718
 Limits: [7, 30]   Songs entered: 4   Par-combination: [loudness, hotttnesss, tempo, timeSig, songkey, mode]   Average score: 0.7692307692307693
+
 Average score for [6, 13]: 0.816468253968254
+Average score for [9, 16]: 0.9272486772486772
+Average score for [9, 14]: 0.945838695838696
+Average score for [6, 21]: 0.783829365079365
+Average score for [2, 16]: 0.8135616819827347
+Average score for [9, 17]: 0.9408323158323157
+Average score for [6, 16]: 0.8133748576786552
+Average score for [2, 19]: 0.8199404761904764
+Average score for [10, 22]: 0.8281068524970964
+Average score for [9, 22]: 0.8114352198121831
+Average score for [4, 21]: 0.7404467960023515
+Average score for [7, 15]: 0.8759772565742714
+Average score for [5, 25]: 0.784297052154195
+Average score for [5, 30]: 0.8651455026455027
+Average score for [5, 20]: 0.845881595881596
+Average score for [3, 29]: 0.9271660052910052
+Average score for [8, 13]: 0.9587813620071683
+Average score for [7, 17]: 0.769047619047619
+Average score for [7, 30]: 0.7432844932844934
+
 Average score for 1: 0.7927579365079364
+Average score for 2: 0.8286584078468896
+Average score for 3: 0.8549099609095253
+Average score for 4: 0.8790022065223678
+Average score for 5: 0.8108401480595032
+
 Average score for ['loudness', 'hotttnesss', 'tempo']: 0.8441982054063137
 Average score for ['loudness', 'hotttnesss', 'timeSig']: 0.8385007885092949
 Average score for ['loudness', 'hotttnesss', 'songkey']: 0.8468563328124388
@@ -840,14 +865,3 @@ Average score for ['loudness', 'hotttnesss', 'timeSig', 'songkey', 'mode']: 0.84
 Average score for ['loudness', 'tempo', 'timeSig', 'songkey', 'mode']: 0.8465383418553747
 Average score for ['hotttnesss', 'tempo', 'timeSig', 'songkey', 'mode']: 0.8511727569074293
 Average score for ['loudness', 'hotttnesss', 'tempo', 'timeSig', 'songkey', 'mode']: 0.8497574790675103
-Average score for [9, 16]: 0.9272486772486772Average score for 3: 0.8549099609095253
-Average score for [9, 14]: 0.945838695838696Average score for 4: 0.8790022065223678
-Average score for [6, 21]: 0.783829365079365Average score for [2, 16]: 0.8135616819827347
-Average score for 5: 0.8108401480595032Average score for [9, 17]: 0.9408323158323157
-Average score for [6, 16]: 0.8133748576786552Average score for [2, 19]: 0.8199404761904764
-Average score for [10, 22]: 0.8281068524970964Average score for [9, 22]: 0.8114352198121831
-Average score for 2: 0.8286584078468896Average score for [4, 21]: 0.7404467960023515
-Average score for [7, 15]: 0.8759772565742714Average score for [5, 25]: 0.784297052154195
-Average score for [5, 30]: 0.8651455026455027Average score for [5, 20]: 0.845881595881596
-Average score for [3, 29]: 0.9271660052910052Average score for [8, 13]: 0.9587813620071683
-Average score for [7, 17]: 0.769047619047619Average score for [7, 30]: 0.7432844932844934
