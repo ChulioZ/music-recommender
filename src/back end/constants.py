@@ -33,7 +33,7 @@ WELCOMESTRING = '<font size="30">Welcome to the Music Recommender System!</font>
     <strong>entamount</strong>: The amount of songs you want the system to randomly choose as entered songs.<br/> \
     Only relevant of course as long as you don\'t enter songs yourself.<br/><br/> \
     Example for a working MRS start:<br/><br/> \
-    <strong>http://127.0.0.1:5000/mrs?rf=True&recamount=20&ent1=SOBLFFE12AF72AA5BA</strong><br/><br/> \
+    <strong>http://127.0.0.1:5000/mrs?rf=True&recamount=20&ent1=SOSJRJP12A6D4F826F</strong><br/><br/> \
     Depending on your PC, getting a recommendation might take a while, so please be patient.<br/><br/><br/><br/> \
     You can also visit <strong>http://127.0.0.1:5000/songs</strong> to get a list of all songs that meet specific seach criteria. There, the parameters to specify are:<br/><br/> \
     <strong>artist</strong>: artist of the song<br/> \
