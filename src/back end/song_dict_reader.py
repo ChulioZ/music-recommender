@@ -79,12 +79,12 @@ def get_rnd_entered_songs(song_dict, amount):
     return random.sample(song_dict.keys(), amount)
 
 
-def get_rnd_good_songs(song_dict, amount):
+def get_rnd_good_songs(song_dict, amount, limits=[9, 24]):
     '''
     Get an amount of random song ids that at least one user has in his
     good category.
     '''
-    listened_songs = get_listened_songs(limits=[9, 24])[0]
+    listened_songs = get_listened_songs(limits=limits)[0]
     # find all songs that at least one user has in his good category
     good_songs = []
     for user in listened_songs.keys():
