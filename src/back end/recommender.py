@@ -7,7 +7,7 @@ from numpy import linalg as LA
 from sklearn.ensemble import RandomForestClassifier
 
 from centroid_distance_getter import get_centroid_distances
-from constants import CHOSEN_PARS, PARS
+from constants import CHOSEN_PARS_CLUSTER, CHOSEN_PARS_RF
 from listening_count_reader import get_listened_songs
 
 
@@ -31,7 +31,7 @@ def recommend(song_dict, entered_ids, amount):
             sid for sid in clusters[song_dict[song_id]['label']]
             if sid not in entered_ids]
         song_dict = distribute_points(
-            ids_to_give_points, song_dict, song_id, CHOSEN_PARS)
+            ids_to_give_points, song_dict, song_id, CHOSEN_PARS_CLUSTER)
     return print_recommendation(song_dict, entered_ids, amount)
 
 
@@ -79,7 +79,7 @@ def recommend_w_rf(song_dict, entered_ids, amount):
                     if song_id not in rf_ids:
                         rf_ids.append(song_id)
                         rf_pars.append([song_dict[song_id][par]
-                                        for par in PARS])
+                                        for par in CHOSEN_PARS_RF])
                         rf_targets_quant.append(1)
                         rf_targets.append(like_value)
                     # if a value already exists for that song, take the
@@ -105,7 +105,7 @@ def recommend_w_rf(song_dict, entered_ids, amount):
     songs_to_predict = []
     for song_id in song_dict:
         songs_to_predict.append([song_dict[song_id][par]
-                                 for par in PARS])
+                                 for par in CHOSEN_PARS_RF])
         ids.append(song_id)
     predictions = rf.predict(songs_to_predict)
     # points are given only to songs that are predicted in the good category
@@ -118,11 +118,11 @@ def recommend_w_rf(song_dict, entered_ids, amount):
     # for each entered song, distribute points to all good songs
     for song_id in entered_ids:
         song_dict = distribute_points(ids_to_give_points, song_dict, song_id,
-                                      PARS)
+                                      CHOSEN_PARS_RF)
     return print_recommendation(song_dict, entered_ids, amount)
 
 
-def distribute_points(ids_to_give_points, song_dict, entered_id, pars,
+def distribute_points(ids_to_give_points, song_dict, entered_id, parameters,
                       min_points=8, max_points=10):
     '''
     Distributes points to songs depending on its similarity to an
@@ -146,7 +146,7 @@ def distribute_points(ids_to_give_points, song_dict, entered_id, pars,
     # for each song calculate the euclidean distance to the entered song
     for song_id in ids_to_give_points:
         par_distances = [song_dict[entered_id][key] -
-                         song_dict[song_id][key] for key in pars]
+                         song_dict[song_id][key] for key in parameters]
         distance = LA.norm(par_distances, 2)  # euclidean distance
         song_dict[song_id]['distance'] = distance
         max_distance = max(max_distance, distance)
@@ -231,18 +231,18 @@ def test_recommend(entered_ids, ids2test, song_dict, centroids):
             # the less points it gets
             if i == song_label:
                 song_dict = distribute_points(
-                    ids_to_give_points, song_dict, song_id, CHOSEN_PARS)
+                    ids_to_give_points, song_dict, song_id, CHOSEN_PARS_CLUSTER)
             elif distance <= 0.1 * avg_distance:
                 song_dict = distribute_points(
-                    ids_to_give_points, song_dict, song_id, CHOSEN_PARS,
+                    ids_to_give_points, song_dict, song_id, CHOSEN_PARS_CLUSTER,
                     min_points=6, max_points=7)
             elif distance <= 0.25 * avg_distance:
                 song_dict = distribute_points(
-                    ids_to_give_points, song_dict, song_id, CHOSEN_PARS,
+                    ids_to_give_points, song_dict, song_id, CHOSEN_PARS_CLUSTER,
                     min_points=4, max_points=5)
             elif distance <= 0.5 * avg_distance:
                 song_dict = distribute_points(
-                    ids_to_give_points, song_dict, song_id, CHOSEN_PARS,
+                    ids_to_give_points, song_dict, song_id, CHOSEN_PARS_CLUSTER,
                     min_points=2, max_points=3)
     point_dict = build_point_dict(song_dict)
     return point_dict

@@ -3,7 +3,8 @@ from os.path import abspath, dirname
 
 
 PARS = ['loudness', 'hotttnesss', 'tempo', 'timeSig', 'songkey', 'mode']
-CHOSEN_PARS = ['loudness', 'tempo', 'timeSig', 'songkey', 'mode']
+CHOSEN_PARS_CLUSTER = ['loudness', 'tempo', 'timeSig', 'songkey', 'mode']
+CHOSEN_PARS_RF = ['hotttnesss', 'timeSig', 'songkey', 'mode']
 CP = ['timeSig', 'songkey', 'mode']
 NCP = ['loudness', 'hotttnesss', 'tempo']
 METHODS = ['get_loudness', 'get_song_hotttnesss',
