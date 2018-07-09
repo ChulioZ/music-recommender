@@ -5,8 +5,8 @@ from flask import Flask, jsonify, request
 from constants import WELCOMESTRING
 from listening_count_reader import get_listened_songs
 from recommender import recommend, recommend_w_rf
-from song_dict_reader import (build_song_list, get_rnd_entered_songs,
-                              get_rnd_good_songs, read_song_dict_w_labels)
+from song_dict_reader import (get_rnd_entered_songs, get_rnd_good_songs,
+                              read_song_dict_w_labels, search_songs)
 
 app = Flask(__name__)
 
@@ -69,7 +69,7 @@ def list_songs():
     title = request.args.get('title')
     song_id = request.args.get('id')
     eligibility = request.args.get('elig')
-    return jsonify(build_song_list(artist, title, song_id, eligibility))
+    return jsonify(search_songs(artist, title, song_id, eligibility))
 
 
 def build_entered_list(request):
@@ -88,4 +88,5 @@ def build_entered_list(request):
 
 
 if __name__ == "__main__":
+    # Start the Flask server
     app.run(host="0.0.0.0", threaded=True)

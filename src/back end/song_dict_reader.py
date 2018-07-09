@@ -31,10 +31,10 @@ def read_song_dict_w_labels():
     return song_dict
 
 
-def build_song_list(artist, title, song_id, eligibility):
+def search_songs(artist, title, song_id, eligibility):
     '''
-    Builds a list of songs meeting specific search criteria to display
-    on /songs.
+    Searches for songs that meet specific search criteria to display on
+    /songs.
 
     artist: artist of the song
 
@@ -50,11 +50,11 @@ def build_song_list(artist, title, song_id, eligibility):
     # remove all songs that don't match all the search criteria
     for song in song_dict:
         if artist is not None and \
-                song_dict[song]['artist'].lower() != artist.lower():
+                artist.lower() not in song_dict[song]['artist'].lower():
             songs_to_pop.append(song)
             continue
         if title is not None and \
-                song_dict[song]['title'].lower() != title.lower():
+                title.lower() not in song_dict[song]['title'].lower():
             songs_to_pop.append(song)
             continue
         if song_id is not None and \
