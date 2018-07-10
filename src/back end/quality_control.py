@@ -10,7 +10,7 @@ def control_quality_rf():
     ''' Controls the quality of the RF recommendations. '''
     listened_songs = get_listened_songs(limits=LIMIT_LIST, needs_good=True)[0]
     users_to_remove = random.sample(
-        listened_songs.keys(), len(listened_songs) - 250)
+        listened_songs.keys(), len(listened_songs) - 5)
     for user in users_to_remove:
         listened_songs.pop(user)
     song_dict = read_song_dict_w_labels()
@@ -19,9 +19,8 @@ def control_quality_rf():
     good_points = []
     i = 1
     for user in listened_songs:
-        entered_ids = random.sample(
-            listened_songs[user]['good'],
-            min(random.randint(1, 3), len(listened_songs[user]['good'])))
+        ent_size = random.randint(1, min(3, len(listened_songs[user]['good'])))
+        entered_ids = random.sample(listened_songs[user]['good'], ent_size)
         point_dict = recommend_w_rf(song_dict, entered_ids, 1)[1]
         for like, point_list in zip(['bad', 'medium', 'good'],
                                     [bad_points, medium_points, good_points]):
